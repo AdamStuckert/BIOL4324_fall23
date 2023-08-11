@@ -30,7 +30,7 @@ One of the most fundamental parts of bioinformatics is a basic familiarity with 
 ##### Windows users
 * PuTTY: A terminal which you can install from [the putty website](https://www.putty.org/)
 * MobaXterm: A terminal which you can install from [the MobaXterm website](https://mobaxterm.mobatek.net/)
-* Built in Linux subsystem in Windows
+* Built in Linux subsystem in Windows [Windows tech forum](https://techcommunity.microsoft.com/t5/windows-11/how-to-install-the-linux-windows-subsystem-in-windows-11/m-p/2701207)
 
 
 
