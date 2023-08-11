@@ -58,7 +58,7 @@ If you are on a Mac and working through the terminal, or on a PC an working thro
 
 This section is your `homework` for the day. You can (and should) get details on these commands using `man` as you go so that you can learn their uses. 
 
-1. What does this command do? 
+**Question 1:** What does this command do? 
 
 ```bash
 pwd
@@ -66,13 +66,13 @@ pwd
 
 Learn more using `man pwd`.
 
-2. The `ls` command lists files and folders in your present directory. Try both `ls -lt` and `ls -lht`. What is the difference between these commands. 
+**Question 2:** The `ls` command lists files and folders in your present directory. Try both `ls -lt` and `ls -lht`. What is the difference between these commands. 
 
-3. Create a new directory named `first_dir`. What command did you use to do this?
+**Question 3:** Create a new directory named `first_dir`. What command did you use to do this?
 
-4. Next we will move into your new directory. What command would you use to do this?
+**Question 4:** Next we will move into your new directory. What command would you use to do this?
 
-5. Now we will create a new file using a text editor called `nano`. Typing the nano command opens up the editor. I want you to save the following as your file text. In order to do this copy it from this page and paste it in to `nano` using a right click. 
+**Question 5:** Now we will create a new file using a text editor called `nano`. Typing the nano command opens up the editor. I want you to save the following as your file text. In order to do this copy it from this page and paste it in to `nano` using a right click. 
 
 ```
 Hello world!
@@ -91,9 +91,9 @@ y  # y to save edits, n to exit without saving edits
 firstfile.txt # whatever you type here will be the file name
 ```
 
-6. What if you forgot what was in this file, or this is a file that someone else gave you and you had no idea what it was? There are a variety of ways to view files. Try `cat`, `head`, `tail`, `less`, and `more`. For each of these you have to specify the filename second (e.g., ` cat firstfile.txt`). What is the difference between `cat` and `head`?
+**Question 6:** What if you forgot what was in this file, or this is a file that someone else gave you and you had no idea what it was? There are a variety of ways to view files. Try `cat`, `head`, `tail`, `less`, and `more`. For each of these you have to specify the filename second (e.g., ` cat firstfile.txt`). What is the difference between `cat` and `head`?
 
-7. Make a copy of your file, then remove the original.
+**Question 7:** Make a copy of your file, then remove the original.
 
 ```bash
 cp firstfile.txt 2ndfile.txt # make copy
@@ -108,7 +108,7 @@ Now try moving the file.
 mv 2ndfile.txt firstfile.txt
 ```
 
-What is the difference between `cp` and `mv`?
+**Question 8:** What is the difference between `cp` and `mv`?
 
 
 **Programming note:** _ba dum tss!_
@@ -133,7 +133,9 @@ You can view the contents of your directory--it should now contain all of the sa
 more darwin_chapter.txt
 ```
 
-This is the last chapter from Charles Darwin’s last chapter of The Origin of Species’. Press space bar to continue scrolling through the file, type ‘q’ to quit. Now let us say that you want to only look at the first few lines of the file, just to verify it is what you think it is. You can do this by using the ‘head’ command. **Question 1: how many lines does head show?**
+This is the last chapter from Charles Darwin’s last chapter of The Origin of Species’. Press space bar to continue scrolling through the file, type ‘q’ to quit. Now let us say that you want to only look at the first few lines of the file, just to verify it is what you think it is. You can do this by using the ‘head’ command. 
+
+**Question 8: how many lines does head show?**
 
 ```bash
 head darwin_chapter.txt
@@ -161,7 +163,9 @@ tail darwin_chapter.txt
 
 Again, it might be easier to view what tail accomplishes with the `genes.txt` file.
 
-When you are working with data, you will want to sprinkle in many, many little sanity checks. This is especially true if you are trying to manipulate data or files in some fashion. One way I do this frequently is by counting lines of a file (or counting lines in the output of a chunk of code). You can do this with the `wc` command. `wc` is extremely useful! Make sure you look at the various options it has with the `man` program. **Question 2:** How many lines are in this text file?
+When you are working with data, you will want to sprinkle in many, many little sanity checks. This is especially true if you are trying to manipulate data or files in some fashion. One way I do this frequently is by counting lines of a file (or counting lines in the output of a chunk of code). You can do this with the `wc` command. `wc` is extremely useful! Make sure you look at the various options it has with the `man` program. 
+
+**Question 9:** How many lines are in this text file?
 
 ```bash
 wc -l darwin_chapter.txt
@@ -179,7 +183,9 @@ Darwin is credited with the theory of natural selection. You can see that Darwin
 grep "theory" darwin_chapter.txt
 ```
 
-Now, you may be interested in counting exactly how many times he says this. Luckily, we have a tool called *piping*, which allows us to link commands together. This is one of the most useful tools in your toolbox. What piping does is say take the output from the first command and use this to run the second command. Since grep outputs a single line from the file each time it finds the requested string, we can then pipe this in to the `wc` command to count the number of times he says grandeur. **Question 3:** How many times does Darwin use the word "theory"?
+Now, you may be interested in counting exactly how many times he says this. Luckily, we have a tool called *piping*, which allows us to link commands together. This is one of the most useful tools in your toolbox. What piping does is say take the output from the first command and use this to run the second command. Since grep outputs a single line from the file each time it finds the requested string, we can then pipe this in to the `wc` command to count the number of times he says grandeur. 
+
+**Question 10:** How many times does Darwin use the word "theory"?
 
 ```bash
 grep "theory" darwin_chapter.txt | wc -l
@@ -187,6 +193,6 @@ grep "theory" darwin_chapter.txt | wc -l
 
 **Question 4:** Why might counting the number of times Darwin used theory in this way be problematic and imprecise? This will take some thinking about things like return characters and the way `wc` works--so make sure you looked at the man page!
 
-8. We did quite a lot today! Try using `history` to see all the commands you typed today.
+**Question 11:** We did quite a lot today! Try using `history` to see all the commands you typed today.
 
 For more information on some of these commands, and to learn some new and useful ones, take a look at [this website](http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html).
