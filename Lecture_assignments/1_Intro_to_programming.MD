@@ -110,6 +110,83 @@ mv 2ndfile.txt firstfile.txt
 
 What is the difference between `cp` and `mv`?
 
+
+**Programming note:** _ba dum tss!_
+
+Much of the rest of today's material is heavily borrowed from Dr. Chris Balakrishnan's bioinformatics workshop.
+
+First we will begin by learning to download some data from online. There are a variety of ways to do this, but for today we will use `wget`. This is a very useful and important aspect to bioinformatics. I have a compressed folder of files stored on the course's GitHub page. Download this:
+
+```bash
+wget https://github.com/AdamStuckert/Gen711/raw/master/Lab/Files/Lab2.zip
+```
+
+Next, view your current directory. Think back to last week to do this. Once you have done this, you should be able to see that you have downloaded a new file! You did this without a user interface or clicking anything! It should be called `Lab2.zip`. Because this is a compressed folder, if you view this with `less Lab2.zip` you should be able to see the contents of the folder. Before accessing any of them, you will have to uncompress this folder first:
+
+```bash
+unzip Lab2.zip
+```
+
+You can view the contents of your directory--it should now contain all of the same files that you saw when you used `less` to view the zipped directory. We will use these files to start with a bit of a review from last week. Let’s take a peek at the `darwin_chapter.txt` file using the ‘more’ command.
+
+```bash
+more darwin_chapter.txt
+```
+
+This is the last chapter from Charles Darwin’s last chapter of The Origin of Species’. Press space bar to continue scrolling through the file, type ‘q’ to quit. Now let us say that you want to only look at the first few lines of the file, just to verify it is what you think it is. You can do this by using the ‘head’ command. **Question 1: how many lines does head show?**
+
+```bash
+head darwin_chapter.txt
+```
+
+After viewing this, you may have been surprised to learn how many lines `head` automatically shows! Try this again with a new file:
+
+```bash
+head genes.txt
+```
+
+This is an interesting example, and highlights something about UNIX files. That is that until there is a return character (called that because you had to physically return the carriage of a typewriter), it is viewed as the same line of text even if it looks like multiple lines on your screen. Return characters are represented with `\n`.
+
+To specify the number of lines viewed you can use the -n flag. Show the first 100 lines of the file.
+
+```bash
+head -n 100 genes.txt 
+```
+
+To view the last few lines of a file, use the tail command.
+
+```bash
+tail darwin_chapter.txt
+```
+
+Again, it might be easier to view what tail accomplishes with the `genes.txt` file.
+
+When you are working with data, you will want to sprinkle in many, many little sanity checks. This is especially true if you are trying to manipulate data or files in some fashion. One way I do this frequently is by counting lines of a file (or counting lines in the output of a chunk of code). You can do this with the `wc` command. `wc` is extremely useful! Make sure you look at the various options it has with the `man` program. **Question 2:** How many lines are in this text file?
+
+```bash
+wc -l darwin_chapter.txt
+```
+
+How many characters are the file? 
+
+```bash
+wc -c darwin_chapter.txt
+```
+
+Darwin is credited with the theory of natural selection. You can see that Darwin used the word theory quite a bit:
+
+```bash
+grep "theory" darwin_chapter.txt
+```
+
+Now, you may be interested in counting exactly how many times he says this. Luckily, we have a tool called *piping*, which allows us to link commands together. This is one of the most useful tools in your toolbox. What piping does is say take the output from the first command and use this to run the second command. Since grep outputs a single line from the file each time it finds the requested string, we can then pipe this in to the `wc` command to count the number of times he says grandeur. **Question 3:** How many times does Darwin use the word "theory"?
+
+```bash
+grep "theory" darwin_chapter.txt | wc -l
+```
+
+**Question 4:** Why might counting the number of times Darwin used theory in this way be problematic and imprecise? This will take some thinking about things like return characters and the way `wc` works--so make sure you looked at the man page!
+
 8. We did quite a lot today! Try using `history` to see all the commands you typed today.
 
 For more information on some of these commands, and to learn some new and useful ones, take a look at [this website](http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html).
