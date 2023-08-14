@@ -30,3 +30,9 @@ DIR=$(pwd)
 
 This is convenient, because you can use it to call the absolute path with ease, eg: `${DIR}/raw_data/alskdjfaojf.1.fa`
 
+There are several variables that are built in within shell/bash. Prominent among these are yout `$PATH` and `$HOME`. Your `$PATH` includes all the directories in which the computer will automatically look for executables. So if you have a program executable called `supercoolsoftware` that is in your path, you can call it by just typing `supercoolsoftware`. Your `$HOME` is the location you are taken to when you login to the terminal. Note, you can change the directory you are automatically sent to on login, but your `$HOME` remains the same. 
+
+## Conditionals
+
+Conditionals are a programming staple. 
+
