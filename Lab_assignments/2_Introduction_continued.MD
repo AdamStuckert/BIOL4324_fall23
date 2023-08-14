@@ -28,5 +28,5 @@ You can also specify a variable using the output of a command. To do this, you u
 DIR=$(pwd)
 ```
 
-
+This is convenient, because you can use it to call the absolute path with ease, eg: `${DIR}/raw_data/alskdjfaojf.1.fa`
 
