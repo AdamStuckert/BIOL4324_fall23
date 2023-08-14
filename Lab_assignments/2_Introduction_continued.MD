@@ -22,6 +22,11 @@ output_dir=/path/to/output/directory
 
 In each of these cases, the variable is the single string before the `=` sign. To call those variables in your script or terminal, you would use this `$genome`.
 
-You can also specify a variable using the output of a command. To do this, you use the 
+You can also specify a variable using the output of a command. To do this, you use the command inside of `$()`. For example, to set the current directory as the variable `$DIR` you would use this command:
+
+```bash
+DIR=$(pwd)
+```
+
 
 
