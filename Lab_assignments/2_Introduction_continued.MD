@@ -34,5 +34,12 @@ There are several variables that are built in within shell/bash. Prominent among
 
 ## Conditionals
 
-Conditionals are a programming staple. 
+Conditionals are a programming staple. There are three main types that we will cover in class:
+
+1. For loops
+2. While loops
+3. If then statements
+
+Each of these have their own unique uses in programming, and programming languages all have their own
+For loops are meant to run through every item in a list and do a series of tasks.
 
