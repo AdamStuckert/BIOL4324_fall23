@@ -91,6 +91,8 @@ y  # y to save edits, n to exit without saving edits
 firstfile.txt # whatever you type here will be the file name
 ```
 
+Copy and paste the output from `cat firstfile.txt`.
+
 **Question 6:** What if you forgot what was in this file, or this is a file that someone else gave you and you had no idea what it was? There are a variety of ways to view files. Try `cat`, `head`, `tail`, `less`, and `more`. For each of these you have to specify the filename second (e.g., ` cat firstfile.txt`). What is the difference between `cat` and `head`?
 
 **Question 7:** Make a copy of your file, then remove the original.
