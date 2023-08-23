@@ -19,7 +19,7 @@ One of the most fundamental parts of bioinformatics is a basic familiarity with 
 * Folders and Files are all you have. If you want to access one of these, you need to tell the computer EXACTLY where it is. 
 `/home/stuckert/biol4324/exam1_key.txt` will work (assuming you’ve spelled things correctly, and that the file really exists in that location), but `exam1_key.txt` may not.
 
-* Related to the above, any file/location can be specified relative to your current working directory (folder). So for example if I'm in the `biol4324` folder from the above example, I can point to the exam 1 key with `exam1_key.txt`. If I am in the `stuckert/` directory, I can point to the same file with `biol4324/exam1_key.txt`. Alternatively, I can use the *absolute path*, which specifies the full path to a file. In this case, I can use `/home/stuckert/biol4324/exam1_key.txt` to point to this exam key *no matter what directory I am currently in*.
+* Related to the above, any file/location can be specified relative to your current working directory (folder). So for example if I'm in the `biol4324` folder from the above example, I can point to the exam 1 key with `exam1_key.txt`. If I am in the `stuckert/` directory, I can point to the same file with `biol4324/exam1_key.txt`. Alternatively, I can use the *absolute path*, which specifies the full path to a file. In this case, I can use `/home/stuckert/biol4324/exam1_key.txt` to point to this exam key *no matter what directory I am currently in*. Giving *relative paths* is similar to giving someone directions to the nearest Shipley's from *your current location.* *Absolute paths* are similar to giving someone lat/long coordinates.
 
 * In this document, as in scripts generally, lines that begin with a `#` are comments and are not run.
 
@@ -203,6 +203,18 @@ Any file/location can be specified in two ways:
 1. Relative to your current working directory (folder). This is known as the *relative path* because it is *relative* to where you are. So for example if I'm in the biol4324 folder, I can point to the exam 1 key with exam1_key.txt. If I am in the `stuckert/` directory, I can point to the same file with `biol4324/exam1_key.txt`. Alternatively, I can use the absolute path, which specifies the full path to a file. In this case, I can use `/home/stuckert/biol4324/exam1_key.txt` to point to this exam key no matter what directory I am currently in.
 2. You can specify the *full path* of the file/directory. This is known as the *absolute path*. Using absolute paths is long and arduous, but is generally a better practice than repeated use of relative paths. These can be tricky, especially if you are using several directories/files are a few subdirectories away. You can also "cheat" and use variables to help specify absolute paths (see below).
 
+To demonstrate this, do the following (some of these are commands you will have to figure out based on what we've already learned):
+
+```bash
+cd # this will take you straight to your "home" folder (more on this below)
+create a directory structure that includes "path/demo/yall"
+
+```
+
+**Question 12:** How did you create the directory structure "path/demo/yall"?
+**Question 13:** What is the absolute path of the directory "yall"?
+**Question 14:** If you are in the directory "path", how would you specify the relative path to the directory "yall"?
+
 ### Variables 
 
 Variables are an incredibly useful programming tool. I personally use them a lot, possibly excessively. They are particularly useful for calling paths, scripts, or specifying output, etc. They are frequently used in scripts, and are frequently defined based on input when you call a script. Variables can be used to specify paths, integers, executables, etc. As mentioned above, you can use variables as shorthands for paths, which is quite convenient. You can set variables like this:
@@ -226,16 +238,6 @@ This is convenient, because you can use it to call the absolute path with ease, 
 
 There are several variables that are built in within shell/bash. Prominent among these are yout `$PATH` and `$HOME`. Your `$PATH` includes all the directories in which the computer will automatically look for executables. So if you have a program executable called `supercoolsoftware` that is in your path, you can call it by just typing `supercoolsoftware`. Your `$HOME` is the location you are taken to when you login to the terminal. Note, you can change the directory you are automatically sent to on login, but your `$HOME` remains the same. 
 
-## Conditionals
-
-Conditionals are a programming staple. There are three main types that we will cover in class:
-
-1. For loops
-2. While loops
-3. If then statements
-
-Each of these have their own unique uses in programming, and programming languages all have their own
-For loops are meant to run through every item in a list and do a series of tasks.
 
 
 
