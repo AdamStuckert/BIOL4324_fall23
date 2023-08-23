@@ -200,7 +200,7 @@ For the rest of this lab we will focus on some basic, but very useful informatio
 
 Any file/location can be specified in two ways:
 
-1. Relative to your current working directory (folder). This is known as the *relative path* because it is *relative* to where you are. So for example if I'm in the biol4324 folder, I can point to the exam 1 key with exam1_key.txt. If I am in the stuckert/ directory, I can point to the same file with biol4324/exam1_key.txt. Alternatively, I can use the absolute path, which specifies the full path to a file. In this case, I can use /home/stuckert/biol4324/exam1_key.txt to point to this exam key no matter what directory I am currently in.
+1. Relative to your current working directory (folder). This is known as the *relative path* because it is *relative* to where you are. So for example if I'm in the biol4324 folder, I can point to the exam 1 key with exam1_key.txt. If I am in the `stuckert/` directory, I can point to the same file with `biol4324/exam1_key.txt`. Alternatively, I can use the absolute path, which specifies the full path to a file. In this case, I can use `/home/stuckert/biol4324/exam1_key.txt` to point to this exam key no matter what directory I am currently in.
 2. You can specify the *full path* of the file/directory. This is known as the *absolute path*. Using absolute paths is long and arduous, but is generally a better practice than repeated use of relative paths. These can be tricky, especially if you are using several directories/files are a few subdirectories away. You can also "cheat" and use variables to help specify absolute paths (see below).
 
 ### Variables 
