@@ -226,7 +226,7 @@ hifi=/path/to/hifi/executable/hifi
 output_dir=/path/to/output/directory
 ```
 
-In each of these cases, the variable is the single string before the `=` sign. To call those variables in your script or terminal, you would use this `$genome`.
+In each of these cases, the variable is the single string before the `=` sign. To call those variables in your script or terminal, you would use this `$genome`. So you could print a variable to screen with either the `cat` or `echo` command (e.g., `echo $genome`).
 
 You can also specify a variable using the output of a command. To do this, you use the command inside of `$()`. For example, to set the current directory as the variable `$DIR` you would use this command:
 
@@ -234,32 +234,14 @@ You can also specify a variable using the output of a command. To do this, you u
 DIR=$(pwd)
 ```
 
-This is convenient, because you can use it to call the absolute path with ease, eg: `${DIR}/raw_data/alskdjfaojf.1.fa`
+This is convenient, because you can use it to call the absolute path with ease, eg: `${DIR}/raw_data/alskdjfaojf.1.fa` 
+
+**Question 15:** Navigate back to the "path/demo" directory. Use the `pwd` command to create a variable called `CUR_DIR`. What command did you use to do this, how would you print this variable to screen, and what is the result of printing it to screen?
 
 There are several variables that are built in within shell/bash. Prominent among these are yout `$PATH` and `$HOME`. Your `$PATH` includes all the directories in which the computer will automatically look for executables. So if you have a program executable called `supercoolsoftware` that is in your path, you can call it by just typing `supercoolsoftware`. Your `$HOME` is the location you are taken to when you login to the terminal. Note, you can change the directory you are automatically sent to on login, but your `$HOME` remains the same. 
 
+**Question 16:** How would you print your `$PATH` to screen, and what is in your `$PATH`?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**Question XX:** We did quite a lot today! Try using `history` to see all the commands you typed today.
+**Question 17:** We did quite a lot today! Try using `history` to see all the commands you typed today.
 
 For more information on some of these commands, and to learn some new and useful ones, take a look at [this website](http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html).
