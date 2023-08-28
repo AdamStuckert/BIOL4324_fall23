@@ -133,5 +133,7 @@ BUT, we are missing Louie! We need to add the itty bitty kitty to the itty bitty
 
 **Question 9**: Use my for loop above and a nested conditional to make files that start with "shasta" for each shasta, but do not start with "shasta" for Louie. Hint: start a command with `for file in i ii iii iv v vi vii louie` and go from there. Paste in your code.
 
+#### **PUTTING IT ALLLLL TOGETHER**
+
 
 Next time we will get into scripts and using the HPC.
