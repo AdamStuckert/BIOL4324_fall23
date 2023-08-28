@@ -87,9 +87,26 @@ Last weel we ran commands within a single line of code to set the output as a va
 
 **Question 7**: Paste in the output.
 
-
-
 ## While loops
+
+While loops are meant to run repeatedly *while a condition is true*. The simplest form of this is to run while  a number is less than X. This can be useful if you want to run a set number of iterations of code. While loops follow the same format as for loops, but switch out `while` for `for`. Syntax thus looks like this:
+
+```bash
+while CONDITION
+do
+DO THE THING
+done
+```
+
+If, for example, you wanted to run from 1 to 10, you could make a "counter" variable, and run a while loop as long as that `$counter` is less than or equal to 10. 
+```bash
+counter=1
+while [ $counter -le 10 ]
+do
+echo $counter
+((counter++))
+done
+```
 
 ## Nesting loops
 
