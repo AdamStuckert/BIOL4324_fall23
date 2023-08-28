@@ -64,6 +64,21 @@ Use a variable `$num` that you specify, per last week.
 
 ## For loops
 
+For loops execute a series of commands repeatedly. They run through iterations of a variable/file and run the same code over and over, generally until it has gone through all possible iterations. At its simplest, a for loop looks like this:
+
+```bash
+for i in 2 4 6 8 10
+do
+echo "$i coog"
+done
+```
+
+**Question 3**: What is the output of this command?
+
+**Question 4**: What is `i` in this command? What does `i` represent the 4th time this loop is run?
+
+
+
 ## While loops
 
 ## Scripts
