@@ -108,6 +108,14 @@ echo $counter
 done
 ```
 
+The line `((counter++))` takes the current value of `counter` and adds 1 to it. This is a useful tool.
+
+We can also use the `while` command to read through a file and repeat commands iteratively. The while command and condition would thus look like `while read line`; and you have to direct the input into the while loop from file using a directional carrot (`done < input.txt`).
+
+Say for example you have a lot of fasta files in a directory, but after doing quality control on them, some of the files do not pass QC. You could iterate through fasta files like we did above, but you don't want to waste computational time running poor sequence data through your pipeline (or include it in your downstream analyses). So you've populated a text file with all the "good" files to use called `samples_pass_QC.txt`.
+
+**Question 8**: Create a while loop that reads through the file `/project/stuckert/bioinformatics/lab2/samples_pass_QC.txt` and prints "Running pipeline on sample (good sample here)" in which "(good sample here)" should be replaced wtih the line from the text file. Paste in your code.
+
 ## Nesting loops
 
 Loops can be nested within each other like a set of Russian dolls. You can have a series of for loops within each other, you can intermingle for loops and if/else statements. etc. 
@@ -123,7 +131,7 @@ done
 
 BUT, we are missing Louie! We need to add the itty bitty kitty to the itty bitty kitty committee. 
 
-**Question 9??**: Use my for loop above and a nested conditional to make files that start with "shasta" for each shasta, but do not start with "shasta" for Louie. Hint: start a command with `for file in i ii iii iv v vi vii louie` and go from there. Paste in your code.
+**Question 9**: Use my for loop above and a nested conditional to make files that start with "shasta" for each shasta, but do not start with "shasta" for Louie. Hint: start a command with `for file in i ii iii iv v vi vii louie` and go from there. Paste in your code.
 
 
 ## Scripts
