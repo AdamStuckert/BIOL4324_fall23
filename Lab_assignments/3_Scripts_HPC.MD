@@ -67,5 +67,23 @@ You've now made and run your first script! You can do all the same things within
 
 ## Using the HPC
 
-High performance computing clusters require some additional education to use at all, much less effectively. You've all already taken the first step, which is to login to the cluster. The second thing you need to know, after how to login, is a bit about the infrastructure of the cluster.  Clusters have a dedicated set of "login nodes" which everyone gets directed to upon logging in. 
+High performance computing clusters require some additional education to use at all, much less effectively. You've all already taken the first step, which is to login to the cluster via the internet. The second thing you need to know, after how to login, is a bit about the infrastructure of the cluster.  Clusters have a dedicated set of "login nodes" which everyone gets directed to upon logging in. Like your personal computer, this login node has a set number of threads, and a set amount of memory that is available for working processes. Unlike your laptop, this must be shared among ALL the users of the HPC, and some clusters may have hundreds of active users.
+
+![HPC architecture](https://tacc-reproducible-intro-hpc.readthedocs.io/en/latest/_images/hpc_schematic.png)
+
+Because of this, you need to be careful what tasks you are doing on the head node. Be a good citizen of the cluster! They are allowing us to use this for teaching, and we don't want to lose this privilege. The only tasks you should be running on the head node are things like text editing, viewing files, and occasionally downloading data. Anything that takes 1) a lot of memory or 2) more than a minute or two should be a job run on a compute node.
+
+On that note, it is time to learn about job scheduling software!
+
+### SLURM
+
+SLURM is one of several job scheduling software programs which are in charge of managing who gets access to compute nodes and resources based on set criteria. The eytmology of SLURM is lost in the annals of time.
+
+**Question 5:** What do you think SLURM means?
+
+SLURM takes scripts as input 
+
+
+
+
 
