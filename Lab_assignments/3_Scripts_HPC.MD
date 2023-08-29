@@ -81,8 +81,55 @@ SLURM is one of several job scheduling software programs which are in charge of 
 
 **Question 5:** What do you think SLURM means?
 
-SLURM takes scripts as input 
+SLURM takes specialized scripts as input and will allocate needed resources based on the script. To submit this task to the scheduler, we use the `sbatch` command. This creates a *job* which will run the *script* when dispatched to a compute node which the queuing system has identified as being available to perform the work. So you could submit your Hello world script like this:
 
+```bash
+sbatch hello_world.sh
+```
+
+You will get a message that looks like this if it was successfully submitted:
+
+```
+Submitted batch job 1284611
+```
+
+These jobs may run a long time, so you can check the status of these jobs with the `squeue` command. I find this command difficult to type, there are an entirely unreasonable number of vowels strung together. It will be most helpful to specify your username with the `-u cougarnet_name` to filter results down to only your jobs. Unless you are nosey and you wanna see what that overachiever 2 seats down is doing. The output will be like this:
+
+```
+[astucker@opuntia ~]$ squeue -u astucker
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1284612     teach hello_wo astucker  R       0:04      1 compute-0-30
+```
+
+It shows the job ID, the partition (in our case we have a dedicated partition for the course), name of the script running, etc. TIME refers to total running time. While the script runs it produces output to a logfile. By default, these are named "slurm-batchjob#.out". So the 
+
+Many bioinformatic processes will take a lot of resources to properly run. Among the things you may want to modify are the memory allotment, number of threads requested, and the runtime. These are probably the most useful for the purposes of our class. But there are also ways to request multiple tasks that get spread out over several compute nodes. We have limited resources for the class that we need to share and will mostly be working with pared down datasets, so this is not much of an issue for us, but may be for you if you do bigger analyses. All of these are modified via `#SBATCH` at the very beginning of your script.
+
+```bash
+#!/bin/bash
+#SBATCH t 1-00:01 # total requested time the job may run in D-HH:MM
+#SBATCH --cpus-per-task=4 # requests 4 threads/cpus per task. You can also set ntasks, but by default it is 1
+#SBATCH --mem=10Gb # specify the amount of memory to request for the job
+```
+
+Note: if you run over time requested or the memory requested you will get an error message similar to this:
+
+```
+slurmstepd: error: *** JOB ID# ON PARTITION CANCELLED AT TIME DUE TO TIME LIMIT ***
+```
+
+The error may be for several possible reasons, for us most likely due to memory or time.
+
+You may also cancel jobs with the `scancel JOBID` command (sub your job id number for JOBID). Save the following script to a file.
+
+```
+#!/bin/bash
+#SBATCH --cpus-per-task=1
+
+sleep 10m
+```
+
+**Question 6:** Submit this script as a job. View your running jobs with one of the commands you've learned today, and cancel it with scancel. Screenshot your terminal to show me that you did this and paste it in.
 
 
 
