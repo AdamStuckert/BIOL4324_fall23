@@ -48,7 +48,24 @@ The two right most fields are the name (rightmost field) and the date this was l
 
 **Question 2:** What group are you in?
 
+I've mentioned executables several times now. Executables are scripts that you can run, and often live in your `$PATH`. 
+
+**Question 3:** What is your path?
+
+You can change the executable status of your script with the `chmod` command. To set it to executable for yourself you would use the command for user (`u`) and add executable (`+x`) like this:
+
+```bash
+chmod u+x SCRIPT_NAME
+```
+
+If you run `ls -l` again you should see that permissions changed. Depending on the terminal you are using, it may now show your script as green, this is a common convention for executables. You can now run your script with either `sh hello_world.sh` or `./hello_world.sh`. The `./` signifies your current directory, so you may need to change the path you give it if you are in a differeent directory.
+
+**Question 4:** Paste a screenshot of calling your script and the output.
+
+You've now made and run your first script! You can do all the same things within a script that we've already talked about: conditionals like if/else statements, variables, etc.
 
 
+## Using the HPC
 
+High performance computing clusters require some additional education to use at all, much less effectively. You've all already taken the first step, which is to login to the cluster. The second thing you need to know, after how to login, is a bit about the infrastructure of the cluster.  Clusters have a dedicated set of "login nodes" which everyone gets directed to upon logging in. 
 
