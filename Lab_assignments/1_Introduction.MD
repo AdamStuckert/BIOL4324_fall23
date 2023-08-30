@@ -122,7 +122,7 @@ rm firstfile.txt # remove original
 ls -lht
 ```
 
-Now try moving the file.
+Now try moving the file. What happens when you try this?
 
 ```bash
 mv 2ndfile.txt firstfile.txt
