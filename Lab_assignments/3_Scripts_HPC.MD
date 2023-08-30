@@ -118,7 +118,7 @@ Note: if you run over time requested or the memory requested you will get an err
 slurmstepd: error: *** JOB ID# ON PARTITION CANCELLED AT TIME DUE TO TIME LIMIT ***
 ```
 
-The error may be for several possible reasons, for us most likely due to memory or time.
+The error may be for several possible reasons, for us most likely due to memory or time. In general, you should aim to request only *slightly* more resources than are needed for your job. In practice, this can be hard to determine, particularly the first time you are attempting a task. 
 
 You may also cancel jobs with the `scancel JOBID` command (sub your job id number for JOBID). Save the following script to a file.
 
@@ -131,6 +131,20 @@ sleep 10m
 
 **Question 6:** Submit this script as a job. View your running jobs with one of the commands you've learned today, and cancel it with scancel. Screenshot your terminal to show me that you did this and paste it in.
 
+Available resources are typically determined by the physical setup of the cluster (ie, how many compute nodes there are, how many cpus each has, how much memory, etc). For this class we have been given a teaching allocation, so we have very limited resources. Since we are all in lab together running things at nearly the same time, I am going to cap our resources. **Unless I tell you otherwise, please use no more than 5 threads (`--cpus-per-task=1`) and 15 Gb of memory (`--mem=15Gb`).**
 
+**Question 7:** Please write the following: I, (your name here), do solemnly swear to use no more than 5 cpus and 15 Gb of memory per job I submit.
+
+## Interactive jobs
+
+Unfortunately, it is fairly common to have your jobs wait in the queue to be allocated resources to run. Depending on the cluster, number of active users, the infrastructure, and the resources you request, this may be from minutes to days. We are not likely to be in this position as they have devoted several compute nodes to the class for us so we will get priority on those nodes. But, if you are running a new script or building a script and you aren't sure that it will run through, it can be really annoying (and a huge timesink) to submit a job, wait a day for resources so your job can start, and then have your job immediately error out. Enter: interactive jobs!
+
+```
+srun --pty bash
+```
+
+This will put you in the queue, and once you are allocated resources you will be given a prompt like normal. But instead of being on the login node, you are on the compute node. This allows you to test your code, and make edits as you go. It can be quite useful. You can also provide the same resource allocation requests within `srun` that you do within `sbatch` or your shell script. A good practice is to use a toy dataset that is significanlty pared down from the full dataset to test your code. You can then request minimal resources and run in an interactive session.
+
+**Question 8:** Take a look at the prompt on the login node. Now run an interactive job and look at the prompt. Is there anything different?
 
 
