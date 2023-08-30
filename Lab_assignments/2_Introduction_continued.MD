@@ -26,7 +26,7 @@ if [ -f testfile.txt ]
 fi
 ```
 
-**Question 1:** paste in a screenshot of this from your terminal.
+**Question 1:** paste in a screenshot of this and its result from your terminal.
 
 A more complicated version of this is to do a command if a condition is met, and a followup command if that condition is not met.
 
