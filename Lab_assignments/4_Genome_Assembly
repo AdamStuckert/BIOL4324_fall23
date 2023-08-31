@@ -40,7 +40,13 @@ The changes to our bashrc should now have taken effect.
 **Question 1:** Print your path to screen and paste in what is in your path.
 
 
-Now we'll make a "conda environment" that will hold all of our installations, activate it, and install the programs we'll need for today's lab. Recognize any of them?
+Now we'll make a "conda environment" that will hold all of our installations, activate it, and install the programs we'll need for today's lab. Software installs are annoying. And often you end up with conflicting installs to run different tasks/pieces of software. So people have develope software management systems, things like anaconda, docker, and singularity which create environments or packages with which to install and run software without interfering with other software.
+
+
+
+
+
+Recognize any of them?
 While we will use a very similar process during each lab, the individual programs we will install will change.
 > conda create -y --name gen711  
 > conda activate gen711  
