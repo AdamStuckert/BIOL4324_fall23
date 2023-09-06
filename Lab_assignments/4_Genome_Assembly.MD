@@ -51,7 +51,7 @@ conda create --prefix Absolute/path/ofa/directory/in/your/file/structure/ENV_NAM
 
 Sub out the path + ENV_NAME for your path and a reasonable environment name. You might choose to go with `genome_assembly` or similar. It will ask you if you are sure you want to modify this, yadda yadda, and the answer is yes. You can then load that environment with `conda activate Absolute/path/ofa/directory/in/your/file/structure/ENV_NAME`. This is analogous to stepping inside the shipping container.
 
-Now, install some software. This may take a while...
+Now, install some software. This may take a while...but luckily for you I tested which software packages take forever/are difficult to install and I made this easier/less time consuming for you so you don't spend the whole lab installing software.
 
 ```bash
 conda activate ENV_NAME  
@@ -104,6 +104,12 @@ The Illumina data has a number of files associated with it (instead of just one 
 Illumina data:
 > curl -LO https://s3.amazonaws.com/gen711/ecoli_data.tar.gz  
 > tar -zxf ecoli_data.tar.gz
+
+Assess the genome length/contiguity:
+```bash
+/project/stuckert/software/assemblathon_stats.pl GENOMEEEEEE
+```
+
 
 ### Assembling the PacBio reads
 
