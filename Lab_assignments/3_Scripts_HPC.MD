@@ -147,4 +147,10 @@ This will put you in the queue, and once you are allocated resources you will be
 
 **Question 8:** Take a look at the prompt on the login node. Now run an interactive job and look at the prompt. Is there anything different?
 
+Just like on the login node or on a compute node, you can execute scripts/commands. But when you are in an interactive session it is easier to piece together pieces of a pipeline or troubleshoot. To demonstrate that you can execute scripts/commands in the same manner, execute this shell script:
 
+```bash
+/project/stuckert/bioinformatics/lab2/while_read.sh
+```
+
+**Question 9:** What is the output of this?
