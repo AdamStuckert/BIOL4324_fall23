@@ -1,5 +1,10 @@
 ## Genome assembly
 
+Today we will be using public data to assemble and assess the genome of the fruit fly *Drosophila ananassae*. These data come from [Tvedte et al. 2021](https://academic.oup.com/g3journal/article/11/6/jkab083/6188627?login=true#304735456). Please note that I have already downloaded these raw data for you, and additionally I have subsampled the data down substantially so that we will be able to run these assemblies in a short timeframe with limited resources. As a result of this, you should not expect to get particularly amazing genome assemblies!
+
+As an aside, I suggest creating a new directory for every lab we do (e.g., something called "lab4" or "genome_assembly") so that you don't have a bajillion files in your home directory. That can get reaaaaaaally confusing reallllllly quickly.
+
+
 ## Software installs
 
 Wahoo! Today is the first day y'all will deal with software installs. Welcome to hell.
@@ -164,7 +169,13 @@ Here is the SPAdes github page, if you're interested in more of the options: htt
   
   
 #### Evaluating our short read assembly  
-  
+
+```bash
+minibusco run --assembly_path $ASSEMBLY \
+--output_dir $BUSCO_OUT --threads 5 --lineage $LINEAGE \
+--library_path /project/stuckert/minibusco_downloads
+```
+
 **Question 5:** Run Quast on the finished SPAdes assembly. The input file for this will be inside the output directory name you gave to SPAdes in the last command. It will always be called "scaffolds.fasta". Change the input and output file names, but make everything else identical to the quast command you ran for the PacBio assembly. Paste in the command you used to run this.  
 
 **Question 6:** Run BUSCO on the finished SPAdes assembly. Again, you should only have to change the input and output files, and make everything else just like it was for the PacBio assembly above. Paste in your command.  
@@ -179,4 +190,4 @@ We will use a file from each of our evaluation commands to compare these two ass
 **Question 8:** Which of the two assemblies has the better N50? Why do you think this is?
 
 
-# Terminate your instance!
+
