@@ -131,7 +131,7 @@ sleep 10m
 
 **Question 6:** Submit this script as a job. View your running jobs with one of the commands you've learned today, and cancel it with scancel. Screenshot your terminal to show me that you did this and paste it in.
 
-Available resources are typically determined by the physical setup of the cluster (ie, how many compute nodes there are, how many cpus each has, how much memory, etc). For this class we have been given a teaching allocation, so we have very limited resources. Since we are all in lab together running things at nearly the same time, I am going to cap our resources. **Unless I tell you otherwise, please use no more than 5 threads (`--cpus-per-task=1`) and 15 Gb of memory (`--mem=15Gb`).**
+Available resources are typically determined by the physical setup of the cluster (ie, how many compute nodes there are, how many cpus each has, how much memory, etc). For this class we have been given a teaching allocation, so we have very limited resources. Since we are all in lab together running things at nearly the same time, I am going to cap our resources. **Unless I tell you otherwise, please use no more than 5 threads (`--cpus-per-task=5`) and 15 Gb of memory (`--mem=15Gb`).**
 
 **Question 7:** Please write the following: I, (your name here), do solemnly swear to use no more than 5 cpus and 15 Gb of memory per job I submit.
 
