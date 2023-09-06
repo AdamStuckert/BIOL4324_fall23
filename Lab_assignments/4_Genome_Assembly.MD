@@ -147,6 +147,10 @@ Assess the genome length/contiguity:
 
 ### Assembling the PacBio reads
 
+We are working with highly accurate HiFi data from PacBio. These are long, but accurate, the best of both worlds. We will be using `Hifiasm` to assemble these. There are a variety of programs for this, but this is fast and works well.
+
+You need to use `-f0` in you hifiasm command so that we disable the memory intensive first step.
+
 This program uses what it called a "fuzzy" De Bruijn graph to make it's assemblies. You can read about it here: https://github.com/ruanjue/wtdbg2  
 
 There are two steps, one for the actual assembly and one for making the final consensus sequence. Neither take very long! Make sure you are paying attention to your output and input files for these programs.  
