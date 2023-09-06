@@ -40,10 +40,19 @@ The changes to our bashrc should now have taken effect.
 **Question 1:** Print your path to screen and paste in what is in your path.
 
 
-Now we'll make a "conda environment" that will hold all of our installations, activate it, and install the programs we'll need for today's lab. Software installs are annoying. And often you end up with conflicting installs to run different tasks/pieces of software. So people have develope software management systems, things like anaconda, docker, and singularity which create environments or packages with which to install and run software without interfering with other software.
+Now we'll make a "conda environment" that will hold all of our installations, activate it, and install the programs we'll need for today's lab. Software installs are annoying. And often you end up with conflicting installs to run different tasks/pieces of software. So people have develope software management systems, things like anaconda, docker, and singularity which create environments or packages with which to install and run software without interfering with other software. These are really useful, particularly if you need versions of python 2 and python 3, for example.
+
+The maintainers of the UH Carya cluster have already installed anaconda for us. We can create "environments" which are self-contained units of software. You can think of it like a shipping container on a big ship making a transatlantic crossing with goods (this is why one software management program is called "docker", because it ships containers). The only caveat is that we need to create environments and place them somewhere we have read/write permissions.
+
+```bash
+conda create --prefix Absolute/path/ofa/directory/in/your/file/structure/ENV_NAME
+# narrator's note: writing all of that path every time you want to do something is probably annoying. You might consider using a variable.....
+```
+
+Sub out the path + ENV_NAME for your path and a reasonable environment name. You might choose to go with `genome_assembly` or similar. It will ask you if you are sure you want to modify this, yadda yadda, and the answer is yes. You can then load that environment with `conda activate Absolute/path/ofa/directory/in/your/file/structure/ENV_NAME`. This is analogous to stepping inside the shipping container.
 
 
-
+Install `Hifiasm`. This program is developed to assemble genomes from accurate long read data. Follow the installation instructions on the [Hifiasm GitHub page](https://github.com/chhylp123/hifiasm).
 
 
 Recognize any of them?
@@ -74,7 +83,7 @@ Now make sure you are in your home directory and we'll get into the actual lab.
 
 ## Lab 4 - Genome Assembly
 
-Today in lab we are going to be assembling a bacterial genome (*Escherichia coli*) in two different ways. First, with long reads from PacBio, and then with short reads from Illumina.
+Today in lab we are going to be assembling a fruit fly (*Drosophila ananassae*) in two different ways. First, with long reads from PacBio, and then with short reads from Illumina.
 
 We will then evaluate each genome assembly using BUSCO and Quast, using outputs from these programs to compare the two assemblies.
 
