@@ -51,22 +51,28 @@ conda create --prefix Absolute/path/ofa/directory/in/your/file/structure/ENV_NAM
 
 Sub out the path + ENV_NAME for your path and a reasonable environment name. You might choose to go with `genome_assembly` or similar. It will ask you if you are sure you want to modify this, yadda yadda, and the answer is yes. You can then load that environment with `conda activate Absolute/path/ofa/directory/in/your/file/structure/ENV_NAME`. This is analogous to stepping inside the shipping container.
 
+Now, install some software. This may take a while...
+
+```bash
+conda activate ENV_NAME  
+conda install -y -c bioconda spades quast  
+conda install -y -c bioconda -c conda-forge compleasm
+cd 
+```
+
+Install `SPades`. This is an assembler for a variety of things, including Illumina data of small genomes.
+
+```bash
+wget http://cab.spbu.ru/files/release3.15.5/SPAdes-3.15.5-Linux.tar.gz
+tar -xzf SPAdes-3.15.5-Linux.tar.gz # the downloaded file is a "tarball" which you have to extract (like a zipped folder)
+cd SPAdes-3.15.5-Linux/bin/ # this is the directory your program lives in.
+```
 
 Install `Hifiasm`. This program is developed to assemble genomes from accurate long read data. Follow the installation instructions on the [Hifiasm GitHub page](https://github.com/chhylp123/hifiasm).
 
 
-Recognize any of them?
-While we will use a very similar process during each lab, the individual programs we will install will change.
-> conda create -y --name gen711  
-> conda activate gen711  
-> conda install -y -c bioconda spades quast  
-> conda install -y -c bioconda -c conda-forge busco=4.0.2  
-> cd  
 
-There is one more program to install (this is an assembler that specializes in long reads) that needs to be installed differently.
-> git clone https://github.com/ruanjue/wtdbg2  
-> cd wtdbg2 && make  
-> cd
+ 
 
 
 ### A quick word about "arguments"  
