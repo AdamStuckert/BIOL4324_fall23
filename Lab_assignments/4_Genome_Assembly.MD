@@ -55,9 +55,7 @@ Now, install some software. This may take a while...but luckily for you I tested
 
 ```bash
 conda activate ENV_NAME  
-conda install -y -c bioconda spades quast  
 conda install -y -c bioconda -c conda-forge compleasm
-cd 
 ```
 
 Install `SPades`. This is an assembler for a variety of things, including Illumina data of small genomes.
