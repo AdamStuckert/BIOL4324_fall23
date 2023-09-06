@@ -2,7 +2,7 @@
 
 Today we will be using public data to assemble and assess the genome of the fruit fly *Drosophila ananassae*. These data come from [Tvedte et al. 2021](https://academic.oup.com/g3journal/article/11/6/jkab083/6188627?login=true#304735456). Please note that I have already downloaded these raw data for you, and additionally I have subsampled the data down substantially so that we will be able to run these assemblies in a short timeframe with limited resources. As a result of this, you should not expect to get particularly amazing genome assemblies!
 
-As an aside, I suggest creating a new directory for every lab we do (e.g., something called "lab4" or "genome_assembly") so that you don't have a bajillion files in your home directory. That can get reaaaaaaally confusing reallllllly quickly.
+As an aside, I suggest creating a new directory for every lab we do (e.g., something called "lab4" or "genome_assembly") so that you don't have a bajillion files in your home directory. That can get reaaaaaaally confusing, reallllllly quickly.
 
 
 ## Software installs
@@ -51,10 +51,21 @@ The maintainers of the UH Carya cluster have already installed anaconda for us. 
 
 ```bash
 conda create --prefix Absolute/path/ofa/directory/in/your/file/structure/ENV_NAME
-# narrator's note: writing all of that path every time you want to do something is probably annoying. You might consider using a variable.....
 ```
 
-Sub out the path + ENV_NAME for your path and a reasonable environment name. You might choose to go with `genome_assembly` or similar. It will ask you if you are sure you want to modify this, yadda yadda, and the answer is yes. You can then load that environment with `conda activate Absolute/path/ofa/directory/in/your/file/structure/ENV_NAME`. This is analogous to stepping inside the shipping container.
+
+
+
+Sub out the path + ENV_NAME for your path and a reasonable environment name. You might choose to go with `genome_assembly` or similar. It will ask you if you are sure you want to modify this, yadda yadda, and the answer is yes. You can then load that environment with `conda activate Absolute/path/ofa/directory/in/your/file/structure/ENV_NAME`. This is analogous to stepping inside the shipping container. 
+
+Narrator's note: writing all of that path every time you want to do something is probably annoying. You might consider using a variable.....
+
+**Question 2:** What code would you use to set that path as a variable?
+**Question 3:**  How would you use that variable in the above `conda activate` code?
+
+You can "exit" the environment by using `conda deactivate`.
+
+**Question 4:** Activate and deactivate the environment a couple of times. What changes about your prompt when you activate the conda environment?
 
 Now, install some software. This may take a while...but luckily for you I tested which software packages take forever/are difficult to install and I made this easier/less time consuming for you so you don't spend the whole lab installing software.
 
@@ -71,12 +82,15 @@ tar -xzf SPAdes-3.15.5-Linux.tar.gz # the downloaded file is a "tarball" which y
 cd SPAdes-3.15.5-Linux/bin/ # this is the directory your program lives in.
 ```
 
+Test this install out immediately! Run `./spades.py`. If you get the help message from SPades then your install isn't immediately obviously broken. You can and SHOULD test software installs before using them on real data. Software often comes with toy datasets to use. For today, we will "test" it with our small datasets.
+
 Install `Hifiasm`. This program is developed to assemble genomes from accurate long read data. Follow the installation instructions on the [Hifiasm GitHub page](https://github.com/chhylp123/hifiasm).
 
+Test this install out immediately! Run `hifiasm`.
 
+**Question 5:** Did your SPades and Hifiasm installs work?
 
- 
-
+If your installs worked, we are now ready to proceed to the analyses/genome assemblies.
 
 ### A quick word about "arguments"  
 
@@ -90,24 +104,41 @@ Try to watch for these as you go through this lab. It will help you start to kno
 Now make sure you are in your home directory and we'll get into the actual lab.
 
 
-## Lab 4 - Genome Assembly
+## Lab 4 - Genome Assembly - the meat and potatoes
 
-Today in lab we are going to be assembling a fruit fly (*Drosophila ananassae*) in two different ways. First, with long reads from PacBio, and then with short reads from Illumina.
+As mentioned above, today in lab we are going to be assembling a fruit fly (*Drosophila ananassae*) in two different ways. First, with Illumina reads and then using PacBio HiFi reads (highly accurate long reads).
 
-We will then evaluate each genome assembly using BUSCO and Quast, using outputs from these programs to compare the two assemblies.
+We will then evaluate each genome assembly using `assemblathon_stats.pl` to assess contiguity and `compleasm` to assess genic content. We will use the outputs from these programs to compare the two assemblies.
 
-First let's download the data we'll be using for this lab.
-Reference genome:
-> curl -LO ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz
+### Assembling the Illumina reads  
+  
+This program was developed in part by the Russian man whose De Bruijn graph videos we've been watching in class. His name is Pavel Pevzner.  
+This command will take a little while to run, so be patient. It will give you updates as it is running, and you should see if you understand some of the messages it will print to the screen.  
+Here is the SPAdes github page, if you're interested in more of the options: https://github.com/ablab/spades#sec2 
+- The options you see with `-pe` or `-mp` at the beginning refer to "paired end" or "mate pair" data, like we talked about in class.
+- The `-m` is a memory limit for when SPAdes is running. This will depend on what size computer you are running the program.
 
-PacBio data:
-> curl -L -o pacbio.fastq http://gembox.cbcb.umd.edu/mhap/raw/ecoli_p6_25x.filtered.fastq
+**Question 4:** Can you guess what information `-k` gives this program? You can check the github page above to see if you are right.
 
-The Illumina data has a number of files associated with it (instead of just one like the PacBio data), so we download it as a "tarball" which is just a group of multiple files that get compressed together. We've used gzipped and zipped files in the past, and this is similar. The next command is to decompress those files so that we can see them as individuals.
-Illumina data:
-> curl -LO https://s3.amazonaws.com/gen711/ecoli_data.tar.gz  
-> tar -zxf ecoli_data.tar.gz
+- The `-o` option is specifying the output, as usual, but this time it is an output directory, so make sure you name it accordingly (and don't include a file extension).  
 
+**Remember, you must run tasks on the compute node, not the login node. Please do not run any assemblies on the head/login node!**
+
+**Question ** What is the header you are using in your script to tell SLURM what resources it needs?
+
+
+The data for this assembly are here: `/project/stuckert/bioinformatics/lab4`. These are the files with `Illumina` in the file name. Remember, Illumina data is _usually paired end_ so there are two sets of reads, a forward and reverse. 
+
+spades.py -t 5 -m 55 --mp1-rf -k 95  --pe1-1 FORWARD_READS  --pe1-2 REVERSE_READS  -o illumina_assembly
+  
+  
+#### Evaluating our short read assembly  
+
+```bash
+minibusco run --assembly_path $ASSEMBLY \
+--output_dir $BUSCO_OUT --threads 5 --lineage $LINEAGE \
+--library_path /project/stuckert/minibusco_downloads
+```
 Assess the genome length/contiguity:
 ```bash
 /project/stuckert/software/assemblathon_stats.pl GENOMEEEEEE
