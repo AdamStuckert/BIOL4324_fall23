@@ -118,13 +118,13 @@ Here is the SPAdes github page, if you're interested in more of the options: htt
 - The options you see with `-pe` or `-mp` at the beginning refer to "paired end" or "mate pair" data, like we talked about in class.
 - The `-m` is a memory limit for when SPAdes is running. This will depend on what size computer you are running the program.
 
-**Question 4:** Can you guess what information `-k` gives this program? You can check the github page above to see if you are right.
+**Question 6:** Can you guess what information `-k` gives this program? You can check the github page above to see if you are right.
 
 - The `-o` option is specifying the output, as usual, but this time it is an output directory, so make sure you name it accordingly (and don't include a file extension).  
 
 **Remember, you must run tasks on the compute node, not the login node. Please do not run any assemblies on the head/login node!**
 
-**Question ** What is the header you are using in your script to tell SLURM what resources it needs?
+**Question 7** What is the header you are using in your script to tell SLURM what resources it needs?
 
 
 The data for this assembly are here: `/project/stuckert/bioinformatics/lab4`. These are the files with `Illumina` in the file name. Remember, Illumina data is _usually paired end_ so there are two sets of reads, a forward and reverse. 
@@ -140,15 +140,15 @@ First we can run a perl script called `assemblathon_stats.pl`. This is a super f
 /project/stuckert/software/assemblathon_stats.pl GENOME_ASSEMBLY # sub in your assembly name for this on the far right
 ```
 
-**Question 5:** How many total base pairs is your assembly? What is the contig N50?
+**Question 8:** How many total base pairs is your assembly? What is the contig N50?
 
-**Question 6:** Look up the *D. ananassee* true genome size online. How does our assembly compare to the estimated genome size from other sources?
+**Question 9:** Look up the *D. ananassee* true genome size online. How does our assembly compare to the estimated genome size from other sources?
 
 Now we will assess genic content using `compleasm`. Compleasm is built on `BUSCO`, a [software program](https://busco.ezlab.org/) designed to look at genic content using conserved orthologs. The fundamental idea is that within a particular lineage, many genes are conserved between species. Genes can be gained and lost over evolutionary history, so more closely related species are more likely to have similar sets of genes. If a genome assembly has the vast majority of these genes, then it is likely to be more complete. If an assembly has a poor proportion of those genes, then it is likely not very complete. Choosing the best lineage is important for this type of analysis. You could choose "vertebrata" for a frog, but there are so many vertebrates with varied gene content that it limits the applicability to test genic completeness. This is slowly becoming less of an issue as more genomes are sequenced, annotated, and added to databases, and it is becoming easier to choose a more appropriate lineage. For more details, [read a recent BUSCO paper](https://academic.oup.com/mbe/article/38/10/4647/6329644).
 
 Look up *Drosophila*'s classification, and then choose the appropriate lineage from [BUSCO's lineage datasets](https://busco-data.ezlab.org/v5/data/lineages/).
 
-**Question 7:** What lineage did you choose?
+**Question 10:** What lineage did you choose?
 
 You need to download this data. You can auto-download data with `compleasm`, but many HPCs restrict or don't have compute nodes with internet access to search/download files via SLURM scripts. So lets do that outside of a job (this is a quick download so it is fine to run on the head node). You will need to activate your conda environment where you installed compleasm.
 
@@ -176,7 +176,7 @@ compleasm run --assembly_path $ASSEMBLY \
 --library_path $LIBRARY
 ```
 
-**Question 8:** Paste in your slurm script. 
+**Question 11:** Paste in your slurm script. 
 
 ### Assembling the PacBio reads
 
@@ -186,7 +186,7 @@ You need to use `-f0` in you hifiasm command so that we disable the memory inten
 
 For Hifiasm, I want you to refer to the [Hifiasm GitHub page](https://github.com/chhylp123/hifiasm) to run this. Make sure that you use the `awk` command they mention to produce the genomic `fasta` file. 
 
-**Question 9:** Paste in your hifiasm script.
+**Question 12:** Paste in your hifiasm script.
 
 Now, run `assemblathon_stats.pl` and `compleasm` on your long read assembly.
 
@@ -195,5 +195,5 @@ Now, run `assemblathon_stats.pl` and `compleasm` on your long read assembly.
 We will use a file from each of our evaluation commands to compare these two assemblies. For Quast, the file we want is called "report.txt" and it is inside the output directory you specified. For BUSCO, the file name is long, but begins with "short_summary" and is inside the output directory that BUSCO made using the name that you gave it.  
 
 
-**Question 10:** Which assembly is better, and which do you have more confidence in. Why? Dicuss the results from both genome assessment methods.
+**Question 13:** Which assembly is better, and which do you have more confidence in. Why? Dicuss the results from both genome assessment methods.
 
