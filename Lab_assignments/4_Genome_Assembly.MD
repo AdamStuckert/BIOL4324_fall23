@@ -194,9 +194,6 @@ Now, run `assemblathon_stats.pl` and `compleasm` on your long read assembly.
 
 We will use a file from each of our evaluation commands to compare these two assemblies. For Quast, the file we want is called "report.txt" and it is inside the output directory you specified. For BUSCO, the file name is long, but begins with "short_summary" and is inside the output directory that BUSCO made using the name that you gave it.  
 
-**Question 7:** Which of the two assemblies has the better BUSCO score? Why do you think this is?
 
-**Question 8:** Which of the two assemblies has the better N50? Why do you think this is?
-
-
+**Question 10:** Which assembly is better, and which do you have more confidence in. Why? Dicuss the results from both genome assessment methods.
 
