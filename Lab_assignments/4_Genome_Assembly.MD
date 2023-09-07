@@ -157,7 +157,18 @@ conda activate ENV
 compleasm download LINEAGE_YOU_CHOSE --library_path . # here the "." refers to the current directory. so it will download the dataset to where you currently are. This is common syntax. You may want to download somewhere else though, which you can specify.
 ```
 
-Now you can populate a shell script for submission to SLURM. Do that please, and run it.
+Now you can populate a shell script for submission to SLURM. Do that please, and run it. There are two tricks you need to know. First is that you need to activate your conda environment for running this. You can do it either before submitting the script **or** in the script I advocate for doing it within your script so that you aren't forgetting to activate it prior to submission. The second trick is that you need to source the conda info within your script. This is kinda annoying, but not too terrible. 
+
+For me, this would look like this:
+
+```bash
+. /project/stuckert/apps/Anaconda3-2023.07-2/etc/profile.d/conda.sh # the period is required
+conda activate $CONDA_ENVS/genome_assembly # I have saved the directory of my conda environments as a global variable cuz that is just too damn much to type all the time
+```
+
+If you do not know where your `conda.sh` is located, you can see via your bashrc file: `cat ~/.bashrc`.
+
+Ok, now back to compleasm. Code will be similar to this, change all the variables for your assemnbly, lineage, etc:
 
 ```bash
 compleasm run --assembly_path $ASSEMBLY \
