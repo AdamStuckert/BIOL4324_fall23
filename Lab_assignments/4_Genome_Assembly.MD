@@ -134,16 +134,38 @@ spades.py -t 5 -m 55 --mp1-rf -k 95  --pe1-1 FORWARD_READS  --pe1-2 REVERSE_READ
   
 #### Evaluating our short read assembly  
 
+First we can run a perl script called `assemblathon_stats.pl`. This is a super fast script that can tell us about total bp, contiguity, and scaffold/contig statistics. I frequently use this in my own work.
+
 ```bash
-minibusco run --assembly_path $ASSEMBLY \
---output_dir $BUSCO_OUT --threads 5 --lineage $LINEAGE \
---library_path /project/stuckert/minibusco_downloads
-```
-Assess the genome length/contiguity:
-```bash
-/project/stuckert/software/assemblathon_stats.pl GENOMEEEEEE
+/project/stuckert/software/assemblathon_stats.pl GENOME_ASSEMBLY # sub in your assembly name for this on the far right
 ```
 
+**Question 5:** How many total base pairs is your assembly? What is the contig N50?
+
+**Question 6:** Look up the *D. ananassee* true genome size online. How does our assembly compare to the estimated genome size from other sources?
+
+Now we will assess genic content using `compleasm`. Compleasm is built on `BUSCO`, a [software program](https://busco.ezlab.org/) designed to look at genic content using conserved orthologs. The fundamental idea is that within a particular lineage, many genes are conserved between species. Genes can be gained and lost over evolutionary history, so more closely related species are more likely to have similar sets of genes. If a genome assembly has the vast majority of these genes, then it is likely to be more complete. If an assembly has a poor proportion of those genes, then it is likely not very complete. Choosing the best lineage is important for this type of analysis. You could choose "vertebrata" for a frog, but there are so many vertebrates with varied gene content that it limits the applicability to test genic completeness. This is slowly becoming less of an issue as more genomes are sequenced, annotated, and added to databases, and it is becoming easier to choose a more appropriate lineage. For more details, [read a recent BUSCO paper](https://academic.oup.com/mbe/article/38/10/4647/6329644).
+
+Look up *Drosophila*'s classification, and then choose the appropriate lineage from [BUSCO's lineage datasets](https://busco-data.ezlab.org/v5/data/lineages/).
+
+**Question 7:** What lineage did you choose?
+
+You need to download this data. You can auto-download data with `compleasm`, but many HPCs restrict or don't have compute nodes with internet access to search/download files via SLURM scripts. So lets do that outside of a job (this is a quick download so it is fine to run on the head node). You will need to activate your conda environment where you installed compleasm.
+
+```
+conda activate ENV
+compleasm download LINEAGE_YOU_CHOSE --library_path . # here the "." refers to the current directory. so it will download the dataset to where you currently are. This is common syntax. You may want to download somewhere else though, which you can specify.
+```
+
+Now you can populate a shell script for submission to SLURM. Do that please, and run it.
+
+```bash
+compleasm run --assembly_path $ASSEMBLY \
+--output_dir $BUSCO_OUT --threads 5 --lineage $LINEAGE \
+--library_path $LIBRARY
+```
+
+**Question 8:** Paste in your slurm script. 
 
 ### Assembling the PacBio reads
 
