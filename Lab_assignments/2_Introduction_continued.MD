@@ -114,6 +114,17 @@ We can also use the `while` command to read through a file and repeat commands i
 
 Say for example you have a lot of fasta files in a directory, but after doing quality control on them, some of the files do not pass QC. You could iterate through fasta files like we did above, but you don't want to waste computational time running poor sequence data through your pipeline (or include it in your downstream analyses). So you've populated a text file with all the "good" files to use called `samples_pass_QC.txt`.
 
+So, as an example, it would look similar to this:
+
+```bash
+while read line
+do
+your fancy pants commands on $line here
+done < input.txt
+```
+
+Similar to how we can `cat` or `echo` or send the output of whatever command to a file with the `>` symbol, we can do the opposite and send a file to a while loop with `<`.
+
 **Question 8**: Create a while loop that reads through the file `/project/stuckert/bioinformatics/lab2/samples_pass_QC.txt` and prints "Running pipeline on sample (good sample here)" in which "(good sample here)" should be replaced wtih the line from the text file. Paste in your code.
 
 ## Nesting loops
