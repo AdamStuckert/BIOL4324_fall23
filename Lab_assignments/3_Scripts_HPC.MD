@@ -154,3 +154,5 @@ Just like on the login node or on a compute node, you can execute scripts/comman
 ```
 
 **Question 9:** What is the output of this?
+
+Last thing, it is very important to exit your interactive session so that other people can use the resource by typing the `exit` command.
