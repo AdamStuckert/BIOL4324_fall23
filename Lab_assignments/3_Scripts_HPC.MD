@@ -50,7 +50,7 @@ The two right most fields are the name (rightmost field) and the date this was l
 
 I've mentioned executables several times now. Executables are scripts that you can run, and often live in your `$PATH`. 
 
-**Question 3:** What is your path?
+**Question 3:** What is your path (`$PATH`)?
 
 You can change the executable status of your script with the `chmod` command. To set it to executable for yourself you would use the command for user (`u`) and add executable (`+x`) like this:
 
