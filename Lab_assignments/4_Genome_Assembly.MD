@@ -184,7 +184,7 @@ We are working with highly accurate HiFi data from PacBio. These are long, but a
 
 You need to use `-f0` in you hifiasm command so that we disable the memory intensive first step.
 
-For Hifiasm, I want you to refer to the [Hifiasm GitHub page](https://github.com/chhylp123/hifiasm) to run this. Make sure that you use the `awk` command they mention to produce the genomic `fasta` file. 
+For Hifiasm, I want you to refer to the [Hifiasm GitHub page](https://github.com/chhylp123/hifiasm) to run this. Again, your data are in the directory `D.ananassae.HiFi.sub.5k.fq`, and they have `HiFi` in the name. Make sure that you use the `awk` command they mention to produce the genomic `fasta` file. 
 
 **Question 12:** Paste in your hifiasm script.
 
