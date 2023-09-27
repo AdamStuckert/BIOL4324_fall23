@@ -65,7 +65,7 @@ Narrator's note: writing all of that path every time you want to do something is
 
 You can "exit" the environment by using `conda deactivate`.
 
-**Question 4:** Activate and deactivate the environment a couple of times. What changes about your prompt when you activate the conda environment?
+**Question 4:** Activate and deactivate the environment a couple of times. What changes about your prompt (everything before where your cursor is to type in the terminal) when you activate the conda environment?
 
 Now, install some software. This may take a while...but luckily for you I tested which software packages take forever/are difficult to install and I made this easier/less time consuming for you so you don't spend the whole lab installing software.
 
