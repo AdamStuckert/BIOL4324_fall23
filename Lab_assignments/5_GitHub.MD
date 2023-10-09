@@ -4,7 +4,7 @@ We will be following the tutorial here: https://product.hubspot.com/blog/git-and
 
 One major note here, do all of this through Opuntia instead of your computer. This also means you do not have to install git--it is already installed there. Another side effect of this is that you will have to continually type your GitHub username and password--this is related to permissions and security on Ron.
 
-1. What is the full path to the location of git on Ron?
+1. What is the full path to the location of git on Opuntia?
 2. Post a screenshot of your newly minted GitHub account (if you already had one for some other purpose that is obviously fine, but still post a screenshot).
 3. Post a screenshot of your newly initiated repo (the first one via the command line).
 4. Post a screenshot of your first commit.
