@@ -173,7 +173,7 @@ Ok, now back to compleasm. Code will be similar to this, change all the variable
 ```bash
 compleasm run --assembly_path $ASSEMBLY \
 --output_dir $BUSCO_OUT --threads 5 --lineage $LINEAGE \
---library_path $LIBRARY
+--library_path $LIBRARY # you may need a "-m lite" flag" --even still it may not work if the assembly is too poor
 ```
 
 **Question 11:** Paste in your slurm script. 
