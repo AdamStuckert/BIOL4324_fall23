@@ -28,7 +28,7 @@ Step 5 note: The command `git checkout -b <my branch name>` can be used to eithe
 
 Step 6 hint: you can copy the code you need via the button to the right of **..or push an existing repository from the command line**
 
-Before Step 7: Add a new file to the second branch (the one you manually created) before you push your new branch. You will have to then `add` and `commit` this file before pushing it. Review the stuff you've already done to remember how to do this!
+Before Step 7: Add a new file to the second branch (the one you manually created) before you push your new branch. You will have to then `add` and `commit` this file before pushing it. Review the stuff you've already done to remember how to do this! *Please note that if you do not add a new file/edit the first file in your new branch you will not be able to submit a pull request.*
 
 6. Post a screenshot of your submitted Pull Request.
 7. Post a screenshot of your git log.
