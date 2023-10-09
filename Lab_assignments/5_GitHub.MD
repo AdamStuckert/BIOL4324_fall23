@@ -4,6 +4,20 @@ We will be following the tutorial here: https://product.hubspot.com/blog/git-and
 
 One major note here, do all of this through Opuntia instead of your computer. This also means you do not have to install git--it is already installed there. Another side effect of this is that you will have to continually type your GitHub username and password--this is related to permissions and security on Ron.
 
+A final note before beginning. Password support is deprecated using `git`. Please follow these instructions to produce a token to use in place of a password:
+
+```
+Log into GitHub with your username and password
+Navigate to your GitHub account settings
+Scroll down and click ‘Developer settings’ in the list of links to the left
+Click the Personal access tokens link
+Click the ‘Generate new token’ button
+Add a ‘Note’ to describe the tokens usage
+Set an expiration date for the GitHub personal access token
+Select the appropriate authentication scope
+Click the ‘Generate token’ button
+```
+
 1. What is the full path to the location of git on Opuntia?
 2. Post a screenshot of your newly minted GitHub account (if you already had one for some other purpose that is obviously fine, but still post a screenshot).
 3. Post a screenshot of your newly initiated repo (the first one via the command line).
