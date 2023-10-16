@@ -43,8 +43,6 @@ Verify that you have both datasets and that they are approximately the same size
 
 **Question 1:** how many reads are in each dataset, and what command did you use to count them? Hint: you can use the format of fastq files to your advantage here. Hint #2: We have not talked about `regular expression` yet, but it is a very powerful way to manipulate data for your purposes. The `^` symbol refers to the start of a line, so you can combine that with some search term to find the answer you want (specify it in quotes like this `"^"` with whatever search string you are using inside those same quotes.
 
-A general note about running things on any HPC: You need to keep in mind the resources you are requesting for a particular bioinformatic task. Not only do you want to be careful with our allocation for the class (if we run out, we are in trouble. terminate your instances when you are done!), but also because you want to be able to run tasks on a cluster. If you ask for too many resources, you might end up in a queue and it will take too long--or you may end up using more than you are alloted and you will error out. The latter is likely to be the case here--if you request too much memory, you can get into this situation. Just something to be cognizant of, particularly when you begin your projects!
-
 Back to the regularly scheduled lab. First we will run Trimmomatic to trim off adaptor sequences.
 
 ```bash
