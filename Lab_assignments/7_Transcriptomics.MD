@@ -62,60 +62,24 @@ Trinity will take a while to run! You can follow along with the output using the
 
 Good work! You've now assembled your first transcriptome! Lets take a look at the assembly quality using the two programs we talked about in class: assemblathon and compleasm. Do these things...
 
-**Question 3:** What does Transrate tell us about our transcriptome?
+**Question 3:** What lineage did you choose to use? 
 
-```bash
-transrate -o transrate -a trinity.Trinity.fasta --left Taricha_granulosa_subsampled.TRIM_1P.fastq  --right Taricha_granulosa_subsampled.TRIM_2P.fastq -t 9
-```
-
-**Question 3:** What is the assembly score and the optimal assembly score for this transcriptome? You might have to kick around in the output files to find the answer you want! 
- 
-Now, we will look at BUSCO scores. 
-
-**Question 4:** Why do we use BUSCO and what does it tell us about our transcriptome?
+**Question 4:** What does assemblathon and compleasm tell us about our transcriptome?
 
 
-First we need to download a BUSCO database and decompress it.
-
-```bash
-wget http://busco.ezlab.org/v2/datasets/metazoa_odb9.tar.gz
-tar -xzvf metazoa_odb9.tar.gz
-```
-
-Next we run BUSCO, pointing it to the metazoa lineage dataset that we just downloaded and decompressed.
-
-```bash
-run_BUSCO.py --lineage metazoa_odb9 -i trinity.Trinity.fasta -m transcriptome --cpu 9 -o busco_trinity 
-```
-
-When we run BUSCO we point it to a lineage dataset. This lineage dataset should generally be as taxa specific as possible. There are some exceptions to this, such as if you are doing work that crosses the BUSCO taxa groups (e.g., if you are comparing transcriptomes across all Metazoa it would be inappropriate to run BUSCO using the tetrapoda lineage dataset for a dog and the aves lineage dataset for a chicken). To reduce the overall time for lab, we will use the Metazoa lineage dataset, which has many fewer shared single copy genes than the more specific Tetrapoda (which we would otherwise use with a newt).
-
-You've now run BUSCO on your assembled transcriptome. **Question 5:** What is the proportion of each of the following in your assembly?
+**Question 5:** What is the proportion of each of the following in your assembly?
 	1. Complete, single copy genes
 	2. Complete, duplicated genes
 	3. Fragmented genes
 	4. Missing genes
 
 
-Next, we will move on to another approach to transcriptome assembly using SPAdes. 
+Next, we will move on to another approach to transcriptome assembly using SPAdes. You have installed this program. Please note that you need to use the `rnaspades.py` command. Use the documentation to figure out what command you should use.
+
+**Question 6:** Paste in the text of your script here.
+
+Run the same assembly metrics.
+
+**Question 7:** Given this information, which assembly do you think is better and why?
 
 
-```
-$HOME/Oyster_River_Protocol/oyster.mk \
-STRAND=RF \
-MEM=15 \
-CPU=9 \   
-READ1=Taricha_granulosa_subsampled.1.fq \
-READ2=Taricha_granulosa_subsampled.2.fq \
-RUNOUT=newt
-```
-
-Ok, so jetstream is interpreting these all as separate lines. So to make your life easier, you can just paste this into a text editor (NOT Word!!) and then make it a single line. Paste that in. Or just type it all! It will give you the full life experience :)
-
-**Question 6:** how do the BUSCO scores compare between the assemblies?
-
-**Question 7:** how do the transrate scores compare between the assemblies?
-
-**Question 8:** Given this information, which assembly do you think is better and why?
-
-**Question 9:** What is different about these two approaches to transcriptome assembly? You may need to look at the ORP code to figure this out!
