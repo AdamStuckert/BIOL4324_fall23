@@ -13,23 +13,24 @@ For lab today we will be taking two different approaches to transcriptome assemb
 
 Tip: Make separate environments for different assemblers.
 
-First, install Trinity via conda:
+First, install Trinity via conda. Remember that you will want to create the environment similar to how we did in the genome assembly lab.
 
 ```bash
 conda install -c bioconda trinity
+
 ```
 
 Second, install SPAdes. Do you still have your spades installed from the other week> Great, then you are done.
 
 Third, install compleasm. Oh good, you are already done since you installed it the other week.
 
-Lastly, install Transrate.
+Fourth, install trimmomatic. This program does read trimming (barcodes, quality, etc).
 
 ```bash
-conda install -c bioconda transrate
+conda install -c bioconda trimmomatic
 ```
 
-
+ 
 Now we will download our newt data!
 
 ```bash
@@ -43,17 +44,20 @@ Verify that you have both datasets and that they are approximately the same size
 
 **Question 1:** how many reads are in each dataset, and what command did you use to count them? Hint: you can use the format of fastq files to your advantage here. Hint #2: We have not talked about `regular expression` yet, but it is a very powerful way to manipulate data for your purposes. The `^` symbol refers to the start of a line, so you can combine that with some search term to find the answer you want (specify it in quotes like this `"^"` with whatever search string you are using inside those same quotes.
 
-Back to the regularly scheduled lab. First we will run Trimmomatic to trim off adaptor sequences.
+Back to the regularly scheduled lab. First we will run Trimmomatic to trim off adaptor sequences and then run Trinity. Note: these need to be run on the compute node and NOT the headnode!
 
 ```bash
-trimmomatic PE -threads 5 -baseout Taricha_granulosa_subsampled.TRIM.fastq Taricha_granulosa_subsampled.1.fq Taricha_granulosa_subsampled.2.fq LEADING:3 TRAILING:3 ILLUMINACLIP:${MAKEDIR}/barcodes/barcodes.fa:2:30:10:8:TRUE MINLEN:25
+trimmomatic PE -threads 5 -baseout Taricha_granulosa_subsampled.TRIM.fastq Taricha_granulosa_subsampled.1.fq Taricha_granulosa_subsampled.2.fq LEADING:3 TRAILING:3 ILLUMINACLIP:/project/stuckert/bioinformatics/lab7/barcodes.f7a:2:30:10:8:TRUE MINLEN:25
 ```
 
 Finally, we will run Trinity to assemble our transcriptome! Trinity runs in 3 parts (inchworm, chrysalis, butterfly), and will take a little bit of time to run.
 
 ```bash
-Trinity --SS_lib_type RF --no_version_check --bypass_java_version_check --no_normalize_reads --seqType fq --output trinity/ --max_memory 15G --left Taricha_granulosa_subsampled.TRIM_1P.fastq  --right Taricha_granulosa_subsampled.TRIM_2P.fastq  --CPU 5 --inchworm_cpu 5 --full_cleanup
+Trinity --SS_lib_type RF --no_version_check --seqType fq --output trinity/ --max_memory 15G --left $OUTPUT_FROM_TIMMOMATIC_LEFT  --right $OUTPUT_FROM_TIMMOMATIC_RIGHT  --CPU 5 --inchworm_cpu 5 --full_cleanup --now_bowtie
+# obviously substitute your trimmomatic output for the variables.
 ```
+
+**Question 2:** What was your script? Paste in the text of the script that worked.
 
 Good work! You've now assembled your first transcriptome! Lets take a look at the assembly quality using the two programs we talked about in class: Transrate and BUSCO. First we will use Transrate.  
 
