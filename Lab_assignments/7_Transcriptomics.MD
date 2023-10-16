@@ -46,16 +46,18 @@ Verify that you have both datasets and that they are approximately the same size
 Back to the regularly scheduled lab. First we will run Trimmomatic to trim off adaptor sequences.
 
 ```bash
-trimmomatic PE -threads 9 -baseout Taricha_granulosa_subsampled.TRIM.fastq Taricha_granulosa_subsampled.1.fq Taricha_granulosa_subsampled.2.fq LEADING:3 TRAILING:3 ILLUMINACLIP:${MAKEDIR}/barcodes/barcodes.fa:2:30:10:8:TRUE MINLEN:25
+trimmomatic PE -threads 5 -baseout Taricha_granulosa_subsampled.TRIM.fastq Taricha_granulosa_subsampled.1.fq Taricha_granulosa_subsampled.2.fq LEADING:3 TRAILING:3 ILLUMINACLIP:${MAKEDIR}/barcodes/barcodes.fa:2:30:10:8:TRUE MINLEN:25
 ```
 
 Finally, we will run Trinity to assemble our transcriptome! Trinity runs in 3 parts (inchworm, chrysalis, butterfly), and will take a little bit of time to run.
 
 ```bash
-Trinity --SS_lib_type RF --no_version_check --bypass_java_version_check --no_normalize_reads --seqType fq --output trinity/ --max_memory 20G --left Taricha_granulosa_subsampled.TRIM_1P.fastq  --right Taricha_granulosa_subsampled.TRIM_2P.fastq  --CPU 9 --inchworm_cpu 9 --full_cleanup
+Trinity --SS_lib_type RF --no_version_check --bypass_java_version_check --no_normalize_reads --seqType fq --output trinity/ --max_memory 15G --left Taricha_granulosa_subsampled.TRIM_1P.fastq  --right Taricha_granulosa_subsampled.TRIM_2P.fastq  --CPU 5 --inchworm_cpu 5 --full_cleanup
 ```
 
-Good work! You've now assembled your first transcriptome! Lets take a look at the assembly quality using the two programs we talked about in class: Transrate and BUSCO. First we will use Transrate.  **Question 2:** What does Transrate tell us about our transcriptome?
+Good work! You've now assembled your first transcriptome! Lets take a look at the assembly quality using the two programs we talked about in class: Transrate and BUSCO. First we will use Transrate.  
+
+**Question 2:** What does Transrate tell us about our transcriptome?
 
 ```bash
 transrate -o transrate -a trinity.Trinity.fasta --left Taricha_granulosa_subsampled.TRIM_1P.fastq  --right Taricha_granulosa_subsampled.TRIM_2P.fastq -t 9
@@ -88,53 +90,8 @@ You've now run BUSCO on your assembled transcriptome. **Question 5:** What is th
 	4. Missing genes
 
 
-Next, we will move on to a newer approach to transcriptome assembly. This is the Oyster River Protocol. Oyster River may sound familiar, that is because it is named for the Oyster River right by us, and this pipeline was developed by Dr. Matt MacManes here at UNH. We read about it for class today. Hopefully you remember something about it.
+Next, we will move on to another approach to transcriptome assembly using SPAdes. 
 
-This pipeline is reliant on a whole bunch of independent software pieces. Installation could take forever if you manually did each piece, or even if you used conda. For this particular task we will use Docker. Docker is like Conda in that you can have package controlled environments. However, in Docker you download a completely compiled environment, and therefore there isn't any sunk time compiling (or the associated weeping and gnashing of teeth when things don't compile correctly/have dependency issues). The Docker equivalent of conda's environments are called images. The other thing about docker is that in order to run things we have to start the image and either do all the work inside the newly created container and copy the data outside it, or "mount" part of your current drive to be used by Docker. For our purposes we will just start a new Docker container and run everything within it.
-
-
-**IMPORTANT NOTE: For this portion of lab we will start another instance! Please save all the data you need from the first half of lab (BUSCO + transrate score information) and delete that instance.** After doing this, start a new instance. Use a `m1.large` size version of the `Ubuntu 18.04 Devel and Docker` image.
-
-There are some weird, jetstream specific Docker issues. After logging in do this:
-
-```bash
-sudo usermod -a -G docker USERNAME
-```
-
-Now you have to **log out and log back in to get this to work**. You can just type `exit` and then log back in via your `ssh -i` command again. Now we can use docker. Install the image.
-
-```bash
-docker pull macmaneslab/orp:2.2.6
-```
-
-Next you have to start up a container of the image. 
-
-```bash
-sudo docker run -it macmaneslab/orp:2.2.6 bash
-```
-
-Now you will need to download the data again, since we didn't mount a directory. In reality, I would probably mount it as a general rule. But there is something a bit funky about how jetstream works with docker and user permissions, so this is a work around. You can always copy things outside of the docker container (we may do this later this semester, or may not).
-
-```bash
-mkdir newt
-cd newt
-wget https://raw.githubusercontent.com/AdamStuckert/Gen711/master/Lab/Files/Taricha_granulosa_subsampled.1.fq
-wget https://raw.githubusercontent.com/AdamStuckert/Gen711/master/Lab/Files/Taricha_granulosa_subsampled.2.fq
-```
-
-Check everything exists!
-
-```
-ls -lht
-```
-
-Activate a conda environment
-
-```
-conda activate orp
-```
-
-Run the protocol...
 
 ```
 $HOME/Oyster_River_Protocol/oyster.mk \
