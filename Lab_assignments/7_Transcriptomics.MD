@@ -53,15 +53,16 @@ trimmomatic PE -threads 5 -baseout Taricha_granulosa_subsampled.TRIM.fastq Taric
 Finally, we will run Trinity to assemble our transcriptome! Trinity runs in 3 parts (inchworm, chrysalis, butterfly), and will take a little bit of time to run.
 
 ```bash
-Trinity --SS_lib_type RF --no_version_check --seqType fq --output trinity/ --max_memory 15G --left $OUTPUT_FROM_TIMMOMATIC_LEFT  --right $OUTPUT_FROM_TIMMOMATIC_RIGHT  --CPU 5 --inchworm_cpu 5 --full_cleanup --now_bowtie
+Trinity --SS_lib_type RF --no_version_check --seqType fq --output trinity/ --max_memory 15G --left $OUTPUT_FROM_TIMMOMATIC_LEFT  --right $OUTPUT_FROM_TIMMOMATIC_RIGHT  --CPU 5 --inchworm_cpu 5 --full_cleanup --no_bowtie
 # obviously substitute your trimmomatic output for the variables.
 ```
 
+Trinity will take a while to run! You can follow along with the output using the command `tail -f YOURSLURMOUTPUTFILE.TXT`. 
 **Question 2:** What was your script? Paste in the text of the script that worked.
 
-Good work! You've now assembled your first transcriptome! Lets take a look at the assembly quality using the two programs we talked about in class: Transrate and BUSCO. First we will use Transrate.  
+Good work! You've now assembled your first transcriptome! Lets take a look at the assembly quality using the two programs we talked about in class: assemblathon and compleasm. Do these things...
 
-**Question 2:** What does Transrate tell us about our transcriptome?
+**Question 3:** What does Transrate tell us about our transcriptome?
 
 ```bash
 transrate -o transrate -a trinity.Trinity.fasta --left Taricha_granulosa_subsampled.TRIM_1P.fastq  --right Taricha_granulosa_subsampled.TRIM_2P.fastq -t 9
@@ -69,7 +70,9 @@ transrate -o transrate -a trinity.Trinity.fasta --left Taricha_granulosa_subsamp
 
 **Question 3:** What is the assembly score and the optimal assembly score for this transcriptome? You might have to kick around in the output files to find the answer you want! 
  
-Now, we will look at BUSCO scores. **Question 4:** Why do we use BUSCO and what does it tell us about our transcriptome?
+Now, we will look at BUSCO scores. 
+
+**Question 4:** Why do we use BUSCO and what does it tell us about our transcriptome?
 
 
 First we need to download a BUSCO database and decompress it.
