@@ -44,12 +44,12 @@ mkdir processed_reads
 process_radtags -p ./reads/ --paired  -i gzfastq -o ./processed_reads/ --renz_1 sbfI --renz_2 claI 
 ```
 
-**Question 3:** What do the parameters `--renz_1` and `--renz_2` refer to? Why are they important for this process? Stacks documentation: http://catchenlab.life.illinois.edu/stacks/manual
+**Question 2:** What do the parameters `--renz_1` and `--renz_2` refer to? Why are they important for this process? Stacks documentation: http://catchenlab.life.illinois.edu/stacks/manual
 
 
 Stacks can calculate a variety of population genetics metrics between populations. In order to do this we have to specify populations. In this case we have 2 populations of frogs, each of which represents a color morph of our poison frog. Each read is named in a way to give us lots of information about the sample, including year collected, locality, and individual number. 
 
-**Question 4:** What format are reads in, and if you had to guess what do you think the different parts of the read names refer to?
+**Question 3:** What format are reads in, and if you had to guess what do you think the different parts of the read names refer to?
 
 In order for Stacks to calculate population metrics we have to give it information about which population each sample belongs to. So, lets make a population map with our data. Our data come from two populations that refer to two color morphs. We will specify them as the color morph instead of population, becuase that is ultimately what we (read: Adam) cares about here. Population information.
 
@@ -64,7 +64,7 @@ inds=$(basename -a processed_reads/*R1_001.1.fq.gz | sed "s/_R1_001.1.fq.gz//g")
 
 I haven't gone over the program `sed` yet, but it is a string editor. I often use it to remove common strings. In this case, I am removing the end of the read names (`_R1_001.1.fq.gz`) to get each sample ID.  
 
-**Question 5:** What is inds in the above example?
+**Question 4:** What is inds in the above example?
 
 Now that  you have a list of all the sample IDs, write a for loop that iterates through all of the sample IDs and populates a ... population list. Use the following two lines of code within your for loop.
 
@@ -74,11 +74,11 @@ pop=$(echo $ind | cut -d - -f2 | sed "s/PO/yellow-striped/g" | sed "s/SA/orange-
 printf "%s\t%s\n" "$ind" "$pop" >> poplist.tab
 ```
 
-**Question 6:** Paste in your for loop. 
+**Question 5:** Paste in your for loop. 
 
-**Question 7:** Paste in the first 10 lines of your population file, and the code that you used to print this to screen. 
+**Question 6:** Paste in the first 10 lines of your population file, and the code that you used to print this to screen. 
 
-**Question 8:** What is the content of your population map? Paste in the output of printing it to your screen.
+**Question 7:** What is the content of your population map? Paste in the output of printing it to your screen.
 
 Hopefully you are now beginning to see the utility of conditionals!
 
@@ -92,7 +92,7 @@ denovo_map.pl -T 24 -M 6 -o ./stacks_out/ --samples ./processed_reads/ --popmap 
 
 Note: if you get an error about a `_BINDIR_` find me so I can fix this.
 
-**Question 9: * What happened??? Paste in your output.
+**Question 8: * What happened??? Paste in your output.
 
 If I am being honest, I mostly made you do that because I am petty. I had to figure out what was going on, so you had to at least see what happened.
 
@@ -134,10 +134,10 @@ We are probably interested in the overall difference between populations. How di
 populations -P ./stacks_out -t 24 -M ./poplist.tab --fstats
 ```
 
-**Question 10:** What is the Fst between populations in this study?
+**Question 9:** What is the Fst between populations in this study?
 
-**Question 11:** What do you think this means about these two color morphs? Are they genetically similar or dissimilar? Why do you think this? Note: you may have to watch the pop gen lectures and/or read up on Fst values in order to answer this!
+**Question 10:** What do you think this means about these two color morphs? Are they genetically similar or dissimilar? Why do you think this? Note: you may have to watch the pop gen lectures and/or read up on Fst values in order to answer this!
 
 
-**Question 12:** What does Stacks actually do?
+**Question 11:** What does Stacks actually do?
 
