@@ -109,8 +109,18 @@ mv "$ind"_R2_001.2.fq.gz "$ind".2.fq.gz
 done
 ```
 
-Now rerun the de novo pipeline (remember where you are in your system).
+Now rerun the de novo pipeline (remember where you are in your system). In order to do this, you will need to remake your population map.
 
+```bash
+# delete the population map
+rm poplist.tab
+# make the population list...
+inds=$(basename -a processed_reads/*.1.fq.gz | sed "s/.1.fq.gz//g")
+
+# YOUR for loop here
+```
+
+Double check that this is the right number of lines with the right number of files. If there are too many, you may have to look at the file names and use `grep -v` 
 
 ```bash
 denovo_map.pl -T 5 -M 6 -o ./stacks_out/ --samples ./processed_reads/ --popmap ./poplist.tab --paired
