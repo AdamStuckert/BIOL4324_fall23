@@ -90,6 +90,8 @@ mkdir stacks_out
 denovo_map.pl -T 24 -M 6 -o ./stacks_out/ --samples ./processed_reads/ --popmap ./poplist.tab --paired
 ```
 
+Note: if you get an error about a `_BINDIR_` find me so I can fix this.
+
 **Question 9: * What happened??? Paste in your output.
 
 If I am being honest, I mostly made you do that because I am petty. I had to figure out what was going on, so you had to at least see what happened.
