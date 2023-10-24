@@ -32,7 +32,7 @@ cd ..
 
 There are a few programs that people use to analyze RADseq data, most notably Stacks and ipyrad. For this lab we will be using Stacks. What Stacks does is assemble data from reads into "stacks" of reads that align (hence the name). Conveniently, Stacks can run both to a genome as well as produce these stacks de novo. So you can utilize extant genomic resources for your species of interest, but if those don't exist you can still examine RADseq data in Stacks. 
 
-We will be downloading and installing Stacks from source. Download the program from the [Stacks website](https://catchenlab.life.illinois.edu/stacks/) and [read the manual to understand installation and usage](https://catchenlab.life.illinois.edu/stacks/manual/).
+We will be downloading and installing Stacks from source. Download the program from the [Stacks website](https://catchenlab.life.illinois.edu/stacks/) and [read the manual to understand installation and usage](https://catchenlab.life.illinois.edu/stacks/manual/). **Please note that you will want to use the prefix option in the configure command. Specify a directory you have read permission in.**
 
 
 The first step in Stacks is to demultiplex samples + make sure the appropriate restriction enzyme cut site exists. This will drop any reads that are inappropriately attributed to a sample/don't have a cut site. Our reads were demultiplexed by the sequencing core facility, so we don't need to demultiplex, but we do need to check and verify that our cut sites exist for each read. Stacks has an executable for this called `process_radtags`. 
