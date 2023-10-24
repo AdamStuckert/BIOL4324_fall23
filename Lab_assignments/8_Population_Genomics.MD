@@ -90,7 +90,7 @@ mkdir stacks_out
 denovo_map.pl -T 24 -M 6 -o ./stacks_out/ --samples ./processed_reads/ --popmap ./poplist.tab --paired
 ```
 
-**Question 6: * What happened??? Paste in your output.
+**Question 9: * What happened??? Paste in your output.
 
 If I am being honest, I mostly made you do that because I am petty. I had to figure out what was going on, so you had to at least see what happened.
 
@@ -122,8 +122,10 @@ We are probably interested in the overall difference between populations. How di
 populations -P ./stacks_out -t 24 -M ./poplist.tab --fstats
 ```
 
-**Question 7:** What is the Fst between populations in this study?
+**Question 10:** What is the Fst between populations in this study?
 
-**Question 8:** What do you think this means about these two color morphs? Are they genetically similar or dissimilar? Why do you think this? Note: you may have to watch the pop gen lectures and/or read up on Fst values in order to answer this!
+**Question 11:** What do you think this means about these two color morphs? Are they genetically similar or dissimilar? Why do you think this? Note: you may have to watch the pop gen lectures and/or read up on Fst values in order to answer this!
 
+
+**Question 12:** What does Stacks actually do?
 
