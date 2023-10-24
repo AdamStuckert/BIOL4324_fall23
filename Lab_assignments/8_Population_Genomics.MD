@@ -47,7 +47,9 @@ process_radtags -p ./reads/ --paired  -i gzfastq -o ./processed_reads/ --renz_1 
 **Question 3:** What do the parameters `--renz_1` and `--renz_2` refer to? Why are they important for this process? Stacks documentation: http://catchenlab.life.illinois.edu/stacks/manual
 
 
-Stacks can calculate a variety of population genetics metrics between populations. In order to do this we have to specify populations. In this case we have 2 populations of frogs, each of which represents a color morph of our poison frog. Each read is named in a way to give us lots of information about the sample, including year collected, locality, and individual number. **Question 4:** What format are reads in, and if you had to guess what do you think the different parts of the read names refer to?
+Stacks can calculate a variety of population genetics metrics between populations. In order to do this we have to specify populations. In this case we have 2 populations of frogs, each of which represents a color morph of our poison frog. Each read is named in a way to give us lots of information about the sample, including year collected, locality, and individual number. 
+
+**Question 4:** What format are reads in, and if you had to guess what do you think the different parts of the read names refer to?
 
 In order for Stacks to calculate population metrics we have to give it information about which population each sample belongs to. So, lets make a population map with our data. Our data come from two populations that refer to two color morphs. We will specify them as the color morph instead of population, becuase that is ultimately what we (read: Adam) cares about here. Population information.
 
@@ -55,23 +57,32 @@ SA == Sauce == orange banded morph
 PO == Pongo == yellow striped morph
 
 
-
 ```bash
 # make the population list...
 inds=$(basename -a processed_reads/*R1_001.1.fq.gz | sed "s/_R1_001.1.fq.gz//g")
-
-for ind in $inds
-do
-pop=$(echo $ind | cut -d - -f2 | sed "s/PO/yellow-striped/g" | sed "s/SA/orange-banded/g")
-printf "%s\t%s\n" "$ind" "$pop" >> poplist.tab
-done
 ```
 
-The above is a for loop. These are really, really common in bioinformatics as they are a really convenient way to cycle through a whole bunch of different files in a systematic way. If you continue doing genomics/bioinformatics after the class, I strongly suggest spending some time to learn for loops.
+I haven't gone over the program `sed` yet, but it is a string editor. I often use it to remove common strings. In this case, I am removing the end of the read names (`_R1_001.1.fq.gz`) to get each sample ID.  
 
-We now have a population map. **Question 5:** What is the content of your population map? Paste in the output of printing it to your screen.
+**Question 5:** What is inds in the above example?
 
-Next up: run Stacks! This program is super nice and integrates all the steps into a single command. In this case we are going to run a de novo Stacks assembly. We actually have a brand new genome for this species, but that is extra steps for you that will take some time! So, we will skip that and run de novo.
+Now that  you have a list of all the sample IDs, write a for loop that iterates through all of the sample IDs and populates a ... population list. Use the following two lines of code within your for loop.
+
+```bash
+# make the population list...
+pop=$(echo $ind | cut -d - -f2 | sed "s/PO/yellow-striped/g" | sed "s/SA/orange-banded/g")
+printf "%s\t%s\n" "$ind" "$pop" >> poplist.tab
+```
+
+**Question 6:** Paste in your for loop. 
+
+**Question 7:** Paste in the first 10 lines of your population file, and the code that you used to print this to screen. 
+
+**Question 8:** What is the content of your population map? Paste in the output of printing it to your screen.
+
+Hopefully you are now beginning to see the utility of conditionals!
+
+Next up: run Stacks! This program is super nice and integrates all the steps into a single command. In this case we are going to run a de novo Stacks assembly. We actually have a brand new, chromosome-level genome for this species, but that is extra steps for you that will take some time! So, we will skip that and run de novo.
 
 
 ```bash
@@ -115,4 +126,4 @@ populations -P ./stacks_out -t 24 -M ./poplist.tab --fstats
 
 **Question 8:** What do you think this means about these two color morphs? Are they genetically similar or dissimilar? Why do you think this? Note: you may have to watch the pop gen lectures and/or read up on Fst values in order to answer this!
 
-**Question 9:** Lastly, Ron has limited space and is a teaching resource. Please be good stewards and clean up by removing all the reads in your folder. Post a screenshot which shows the contents of your `reads` and `processed_reads` directories.
+
