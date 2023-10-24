@@ -113,7 +113,7 @@ Now rerun the de novo pipeline (remember where you are in your system).
 
 
 ```bash
-denovo_map.pl -T 24 -M 6 -o ./stacks_out/ --samples ./processed_reads/ --popmap ./poplist.tab --paired
+denovo_map.pl -T 5 -M 6 -o ./stacks_out/ --samples ./processed_reads/ --popmap ./poplist.tab --paired
 ```
 
 We are probably interested in the overall difference between populations. How different are they in the overall genome? One way we examine this is the fixation index, which we can calculate via the population commmand in stacks. Including teh `--fstats` flag will give us some fixation index output.
