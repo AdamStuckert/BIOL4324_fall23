@@ -78,7 +78,7 @@ printf "%s\t%s\n" "$ind" "$pop" >> poplist.tab
 
 **Question 6:** Paste in the first 10 lines of your population file, and the code that you used to print this to screen. 
 
-**Question 7:** What is the content of your population map? Paste in the output of printing it to your screen.
+**Question 7:** What does the content of your population map tell you? 
 
 Hopefully you are now beginning to see the utility of conditionals!
 
