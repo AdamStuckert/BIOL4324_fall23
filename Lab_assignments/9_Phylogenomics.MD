@@ -82,11 +82,16 @@ Take a look at one of these files. There is a lot of information in each of the 
 
 Alternatively, if you wanted to use a command we've seen before (sed) you can do this:
 
-> sed "s/>.*$/>${spp}/" $file > $spp.fa # replace both instances of $spp and the $file
+    sed "s/>.*$/>${spp}/" $file > $spp.fa # replace both instances of $spp and the $file
 
 `sed` is a string editor and it follows this format: 
 
 "s/STRINGTOREPLACE/REPLACEMENTSTRING/". If you want to make it global (ie, across every instance in the file instead of just the first instance per line) you would do this: "s/STRINGTOREPLACE/REPLACEMENTSTRING/g". The `sed` command is much better for use in the for loops (or at least I think easier).
+
+Take a look at your files for each species and the sonic hedgehog gene. If you are finding that you still have multiple sequences, use this command
+
+    sed -n '1,2p' $file > ${file}.dedupd.fa
+
 
 **Question 3:** When you have all of your headers edited appropriately, combine all of those files together. The file you end up with should be a single fasta file with all of the sequences for the sonic hedgehog gene, and all of the headers simple and informative. Paste in the code you used to do this.  
 
