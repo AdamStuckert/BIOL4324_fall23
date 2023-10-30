@@ -34,7 +34,7 @@ Let's make a new directory for this lab so that your files won't be in with ever
 
 Since the genomes and protein sets they have on Ensembl are already annotated with the sequence identities, they are a great place to start for a tree like this. We are going to be working with rodents again, mostly because they are easy to find, pretty diverse, and ensembl has a LOT of them.  
 
-We will need quite a few of them for this tree, and you will have to do some commands to each dataset that we download, so strap in.  
+We will need quite a few of them for this tree, and you will have to do some commands to each dataset that we download, so strap in.   Note, **for loops** would be very useful and this could be an excellent chance to use them!
 
 First, download the datasets from these links just like we've done before:
 - American beaver - ftp://ftp.ensembl.org/pub/release-99/fasta/castor_canadensis/pep/Castor_canadensis.C.can_genome_v1.0.pep.all.fa.gz  
@@ -61,7 +61,6 @@ These files (annoyingly) have sequences that are wrapped - meaning they are not 
     awk '{if(NR==1) {print $0} else {if($0 ~ /^>/) {print "\n"$0} else {printf $0}}}' Castor_canadensis.C.can_genome_v1.0.pep.all.fa > beaver_unwrap.fa  
 
 
-
 ### Pulling out the sequences we want  
 
 Now that we have the data downloaded and its formatting changed, we are ready to extract the sequences we want for this tree. Today we're going to be making a gene tree for the Sonic Hedgehog gene. Yes, this is a real thing. You can read about it if you like (https://ghr.nlm.nih.gov/gene/SHH#synonyms), but it is important in development so we know all of these rodents will have at least one version.  
@@ -72,6 +71,13 @@ Take a look at one of these files. There is a lot of information in each of the 
 
     awk '/^>/{print ">beaver_" ++i; next}{print}' beaver_sonic.fa > header_beaver_sonic.fa  
 
+Alternatively, if you wanted to use a command we've seen before (sed) you can do this:
+
+> sed "s/>.*$/>${spp}/" $file > $spp.fa # replace both instances of $spp and the $file
+
+`sed` is a string editor and it follows this format: 
+
+"s/STRINGTOREPLACE/REPLACEMENTSTRING/". If you want to make it global (ie, across every instance in the file instead of just the first instance per line) you would do this: "s/STRINGTOREPLACE/REPLACEMENTSTRING/g". The `sed` command is much better for use in the for loops (or at least I think easier).
 
 **Question 3:** When you have all of your headers edited appropriately, combine all of those files together. The file you end up with should be a single fasta file with all of the sequences for the sonic hedgehog gene, and all of the headers simple and informative. Paste in the code you used to do this.  
 
