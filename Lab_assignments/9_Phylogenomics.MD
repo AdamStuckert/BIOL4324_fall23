@@ -20,7 +20,16 @@ library(ggtree)
 ```
 
 
-If this does not work for you, or for whatever reason you are unable to do this, please let me know and we'll get you setup. On to the lab!  
+If this does not work for you, or for whatever reason you are unable to do this, please let me know and we'll get you setup. 
+
+Next you will want to install the other programs we will use via conda. I suggest a fresh environment for todays lab.
+
+```bash
+conda install -c bioconda mafft
+conda install -c bioconda iqtree
+```
+
+On to the lab!  
 
 
 ### First, we need data
