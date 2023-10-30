@@ -3,16 +3,29 @@
 ****
 
 
-For this lab, we will need a way of viewing a phylogenetic tree. While there are some online options for doing this, none of them had the features I was looking for, so we are falling back on a program I use to look at phylogenies all the time. It is called FigTree and you can download it here: https://github.com/rambaut/figtree/releases.  
+For this lab, we will need a way of viewing a phylogenetic tree. While there are some online options for doing this, most of them are not that fun. So I am going to introduce you to a new program for analyses: R (and its counterpart the lovely R studio). First you will need to [download R](https://www.r-project.org/) and then [download R studio](https://posit.co/download/rstudio-desktop). This may seem like a lot, but in reality it is fairly straightforward. We will then need to download several "packages" in R. These are similar to different programs in the linux environment, and each package has several functions within.
 
-I just downloaded the latest version because I hadn't updated mine in a while, and it is very simple to do. Just click on the fist link you see on that page (FigTree.v1.4.4.dmg). If this doesn't work and you can't open it, try the one directly beneath that. On my computer, a window pops up that wants to know what to do with the file; I have "open" highlighted and click "OK". When it is finished downloading, a little window pops up with the figtree icon and a number of other files. You can read the README.txt file for more information, but you should also be able to click on the icon that says "FigTree v1.4.4" and open the program. On my computer, it gives me a warning message because I downloaded it from the interwebs and it wants to make sure it's not going to infect my computer (relatable) or anything. And then you should be all set!  
+In R Studio do this:
 
-If this does not work for you, or for whatever reason you are unable to do this, please let me know and we'll find an alternative. On to the lab!  
+```R
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("ggtree")
+
+install.packages("ape") #installs package ape
+
+library(ape) # loads package ape
+library(ggtree) 
+```
+
+
+If this does not work for you, or for whatever reason you are unable to do this, please let me know and we'll get you setup. On to the lab!  
 
 
 ### First, we need data
 
-Go ahead and log onto your Ron account.  
+Go ahead and log onto your Opuntia account.  
 
 Let's make a new directory for this lab so that your files won't be in with everything else.  
 
