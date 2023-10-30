@@ -116,6 +116,15 @@ And finally, we will use a program called iqtree to make the tree. Iqtree has a 
 ### Viewing the tree  
 
 One of the files iqtree produces has "contree" at the end of it. Cat this file onto the screen, and copy everything you see including all the strange looking punctuation.    
+Go to R studio. New language, wahoo!
+
+In R, write this:
+
+    library(ape)
+    library(ggtree)
+    shh_tree <- "" # BUT PASTE IN YOUR CONTREE WITHIN THE QUOTES
+    shh_tree <- read.tree(text=shh_tree)
+    ggtree(shh_tree) 
 
 Paste into FigTree. Literally just command/control v into the open white space and your tree should appear.  
 
