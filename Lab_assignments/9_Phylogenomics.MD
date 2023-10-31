@@ -92,8 +92,9 @@ Take a look at your files for each species and the sonic hedgehog gene. If you a
 
     sed -n '1,2p' $file > ${file}.dedupd.fa
 
+**Question 3:** Tell me about your experience preparing all these files. Did you write these all out by hand? Or did you choose to prepare these in a different way? What would you do/have done differently if you had to redo this with a dataset with 4x the number of species you are downloading?
 
-**Question 3:** When you have all of your headers edited appropriately, combine all of those files together. The file you end up with should be a single fasta file with all of the sequences for the sonic hedgehog gene, and all of the headers simple and informative. Paste in the code you used to do this.  
+**Question 4:** When you have all of your headers edited appropriately, combine all of those files together. The file you end up with should be a single fasta file with all of the sequences for the sonic hedgehog gene, and all of the headers simple and informative. Paste in the code you used to do this.  
 
 
 ### Aligning the sequences and making the tree  
@@ -107,11 +108,12 @@ And finally, we will use a program called iqtree to make the tree. Iqtree has a 
 
 - `-s` is the name of the input file  
 - `-m` is the model we will use - this one is just the initials of the people who created it  
-- `-bb` tells iqtree that we want to do some rapid bootstrapping of our tree, and how many subsets to take  
+- `-bb` tells iqtree ...
 - `-pre` is the prefix of all the output files - iqtree will produce a number of files, and this will be the beginning of all of them   
 
     `iqtree -s input -m LG -bb 1000 -pre output`  
 
+**Question 5: ** What is the `-bb` flag and what does it do?
 
 ### Viewing the tree  
 
@@ -124,16 +126,9 @@ In R, write this:
     library(ggtree)
     shh_tree <- "" # BUT PASTE IN YOUR CONTREE WITHIN THE QUOTES
     shh_tree <- read.tree(text=shh_tree)
+    # if you need to, you can reroot your tree using this:
+    shh_tree <- ape::root.phylo(shh_tree, outgroup = "OUTGROUP NAME")
     ggtree(shh_tree) 
 
-Paste into FigTree. Literally just command/control v into the open white space and your tree should appear.  
 
-The first thing I like to do is make the tip labels bigger. Over on the side there is a tab called "Tip Labels" and if you click the down arrow on the left side of it, you will see the controls to mess with font size and other things.  
-
-As with all phylogenetic trees, we can arrange this tree in a lot of different ways without actually changing the information displayed. Click on the branch leading to the outgroup you identified. It should highlight, and then go up to the buttons at the top and click the third one from the left that says "Reroot". Now we have a rooted tree!  
-
-Check out the relationships. Some of the animals had two sonic hedgehog sequences, and some only had one. Do the relationships that you see here make sense to you? Check out this wikipedia tree (it's actually pretty good) and the tree down in the classifications below it https://en.wikipedia.org/wiki/Rodent#Standard_classification to see what the relationships within Rodentia look like. **Question 4:** Why might your tree look different from the other examples of rodent trees? Think about what you used to make this tree, and why that might or might not be a good set of sequences to reconstruct this phylogeny.  
-
-Next, click on the box next to "Node Labels". If you click on the down arrow, it give you the option to display different measures, and we want the one that says "label". These numbers are just whatever numbers were on our tree (FigTree doesn't know any better), and in this case they are bootstrap values. Remember that the way the tree gets scored (in this case) is a random resampling of the data. So iqtree will randomly pick a subset of the amino acids and make a tree with these new sequences. Then it compares the topology of the subset tree with the original one, and all the branches that are the same get a 1, and all the ones that are different get a 0. The bootstrap values you see on the tree now are percentages of how often that particular node scored a 1 (out of 1000 times), so you can almost think of it like a grade. Node scored a 95? Excellent. Node scored a 35? We should probably not base too many hypotheses on this one. **Question 5:** Are these numbers what you expected? Is your tree well-supported? Explain what you did expect and why they might be lower or higher than your expectation.  
-
-**Question 6:** Just like last lab, we want to make sure we're cleaning up the things that we've downloaded onto Ron, so make sure you delete all of the genome files you downloaded from Ensembl, and the versions that we "unwrapped" with the first awk command. The files with just the sonic genes in there are smaller and not as big of a deal, but feel free to clean those out too if you're feeling inclined. Paste in a screenshot of the contents of your directory to show me that the genome files are gone.
+**Question 6:** Paste in your tree file.
