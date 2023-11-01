@@ -132,3 +132,5 @@ In R, write this:
 
 
 **Question 6:** Paste in your tree file.
+
+**Question 7:** Based on your tree, what is the species most closely related to the beaver?
