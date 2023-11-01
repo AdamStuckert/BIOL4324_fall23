@@ -45,7 +45,7 @@ Since the genomes and protein sets they have on Ensembl are already annotated wi
 
 We will need quite a few of them for this tree, and you will have to do some commands to each dataset that we download, so strap in.   Note, **for loops** would be very useful and this could be an excellent chance to use them!
 
-First, download the datasets from these links just like we've done before:
+First, download the datasets from these links using some of the commands we've used before (if you can't remember them, look at how we downloaded SPades in lab 4):
 - American beaver - ftp://ftp.ensembl.org/pub/release-99/fasta/castor_canadensis/pep/Castor_canadensis.C.can_genome_v1.0.pep.all.fa.gz  
 - Arctic ground squirrel - ftp://ftp.ensembl.org/pub/release-99/fasta/urocitellus_parryii/pep/Urocitellus_parryii.ASM342692v1.pep.all.fa.gz  
 - Degu - ftp://ftp.ensembl.org/pub/release-99/fasta/octodon_degus/pep/Octodon_degus.OctDeg1.0.pep.all.fa.gz  
