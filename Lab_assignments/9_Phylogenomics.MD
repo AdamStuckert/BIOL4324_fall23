@@ -113,7 +113,7 @@ And finally, we will use a program called iqtree to make the tree. Iqtree has a 
 
     `iqtree -s input -m LG -bb 1000 -pre output`  
 
-**Question 5: ** What is the `-bb` flag and what does it do?
+**Question 5:** What is the `-bb` flag and what does it do?
 
 ### Viewing the tree  
 
