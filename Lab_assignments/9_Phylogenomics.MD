@@ -65,7 +65,7 @@ First, download the datasets from these links using some of the commands we've u
 
 Next, go ahead and unzip all these files using the `gzip -d` command.  
 
-These files (annoyingly) have sequences that are wrapped - meaning they are not all on one line in the file. We will have to unwrap them before we move on. Below is the code you will need to do the first file; make sure you do this to all of them.  
+These files (annoyingly) have sequences that are wrapped - meaning they are not all on one line in the file. We will have to unwrap them before we move on. Below is the code you will need to do the first file; make sure you do this to all of them. Remember that the `>` command redirects the output to a new file.
 
     awk '{if(NR==1) {print $0} else {if($0 ~ /^>/) {print "\n"$0} else {printf $0}}}' Castor_canadensis.C.can_genome_v1.0.pep.all.fa > beaver_unwrap.fa  
 
