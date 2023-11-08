@@ -128,7 +128,7 @@ In R, write this:
     shh_tree <- read.tree(text=shh_tree)
     # if you need to, you can reroot your tree using this:
     shh_tree <- ape::root.phylo(shh_tree, outgroup = "OUTGROUP NAME")
-    ggtree(shh_tree) 
+    ggtree(shh_tree) + geom_tiplab() 
 
 
 **Question 6:** Paste in your tree file.
