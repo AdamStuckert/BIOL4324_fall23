@@ -90,7 +90,12 @@ mkdir stacks_out
 denovo_map.pl -T 24 -M 6 -o ./stacks_out/ --samples ./processed_reads/ --popmap ./poplist.tab --paired
 ```
 
-Note: if you get an error about a `_BINDIR_` find me so I can fix this.
+Note: if you get an error about a `_BINDIR_`, this is an issue with the STACKS installation. Lets fix this.
+
+```bash
+sed -i "s&_BINDIR_&YOUR_BIN_PATH&" /PATH2STACKS/stacks-2.65/scripts/denovo_map.pl
+# Change  “YOUR_BIN_PATH” to be where the stacks bin is (probably and /PATH2STACKS/stacks-2.65/bin) and “PATH2STACKS”
+```
 
 **Question 8: * What happened??? Paste in your output.
 
